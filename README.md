@@ -12,7 +12,7 @@ This application uses MongoDB. For instructions on how to set it up, you can hav
 
 # 2018 Team Members
 * Pablo González Balbuena (@pbalbuena)
-* Jaime Fernández Martínez 
+* Jaime Fernández Martínez (@uo251119)
 * Sergio Faya Fernández (@SergioFaya)
 
 # 2017 Team members
