@@ -5,10 +5,15 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ce2928319601416ca8a0c543538d6ba4)](https://www.codacy.com/app/jelabra/citizensLoader_i2b?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/citizensLoader_i2b&amp;utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/Arquisoft/citizensLoader_i2b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/citizensLoader_i2b)
 
-Skeleton of Loader module
+Loader module
 
 #Running the application
 This application uses MongoDB. For instructions on how to set it up, you can have a look at the bottom of [this](https://github.com/Arquisoft/citizensLoader_i2b/wiki/MongoDB-quick-start-guide) wiki page
+
+# 2018 Team Members
+* Pablo González Balbuena (@pbalbuena)
+* Jaime Fernández Martínez 
+* Sergio Faya Fernández (@SergioFaya)
 
 # 2017 Team members
 * Nicolás Pascual González (@nicolaspascual)
@@ -16,7 +21,4 @@ This application uses MongoDB. For instructions on how to set it up, you can hav
 * Miguel García García (@miguelgrc)
 * Pablo García Marcos (@pineirin)
 
-# 2018 Team Members
-* Pablo González Balbuena (@pbalbuena)
-* Jaime Fernández Martínez 
-* Sergio Faya Fernández (@SergioFaya)
+
