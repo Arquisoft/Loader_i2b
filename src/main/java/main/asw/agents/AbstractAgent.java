@@ -1,12 +1,25 @@
 package main.asw.agents;
 
-public class AbstractAgent implements Agent {
+import main.asw.util.Checker;
+/**
+ * 
+ * @author Sergio Faya Fernandez
+ *
+ */
+public abstract class AbstractAgent implements Agent {
 
-	private String name;
-	private String email;
-	private String id;
-	private int agentKind;
+	protected String name = null;
+	protected String email = null;
+	protected  String id = null;
+	protected int agentKind = -1;
 		
+	public AbstractAgent(String name,String email, String id) {
+		checkConstructor();
+		this.name = name;
+		this.email = email;
+		this.id = id;
+	}
+	
 	@Override
 	public String getName() {
 		return name;
@@ -25,6 +38,15 @@ public class AbstractAgent implements Agent {
 	@Override
 	public int getAgentKind() {
 		return agentKind;
+	}
+	
+	private void checkConstructor() {
+		Checker.isNull(name);
+		Checker.isEmpty(name);
+		Checker.isNull(email);
+		Checker.isEmpty(email);
+		Checker.isNull(id);
+		Checker.isEmpty(id);
 	}
 
 }
