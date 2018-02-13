@@ -9,10 +9,10 @@ import main.asw.util.Checker;
  */
 public class LatLng {
 
-	public long latitude;
-	public long longitude;
+	public double latitude;
+	public double longitude;
 	
-	public LatLng(long latitude, long longitude) {
+	public LatLng(double latitude, double longitude) {
 		Checker.isNull(latitude);
 		Checker.isNull(longitude);
 		this.latitude = latitude;
