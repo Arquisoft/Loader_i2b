@@ -6,7 +6,7 @@ package main.asw.agents;
  */
 public class AgentFactory {
 
-	public Agent createAgent(int agentType,String name,String email, String id) {
+	public static Agent createAgent(int agentType,String name,String email, String id) {
 		switch (agentType) {
 		case 1:
 			return new Person(null, null, null);
