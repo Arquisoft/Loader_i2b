@@ -7,15 +7,15 @@ package main.asw.util;
  */
 public class Checker {
 
-	public static void isEmpty(String str) {		
+	public static void isEmpty(String str) throws WrongParameterException {		
 		if(str.isEmpty()) {
-			throw new RuntimeException("Value cannot be empty");
+			throw new WrongParameterException("Value cannot be empty");
 		}
 	}
 	
-	public static void isNull(Object o) {
+	public static void isNull(Object o) throws WrongParameterException {
 		if (o == null) {
-			throw new RuntimeException("Value cannot be empty");
+			throw new WrongParameterException("Value cannot be empty");
 		}
 	}
 }

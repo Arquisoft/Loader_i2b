@@ -1,6 +1,7 @@
 package main.asw.agents;
 
 import main.asw.util.Checker;
+import main.asw.util.WrongParameterException;
 /**
  * 
  * @author Sergio Faya Fernandez
@@ -13,7 +14,7 @@ public abstract class AbstractAgent implements Agent {
 	protected  String id = null;
 	protected int agentKind = -1;
 		
-	public AbstractAgent(String name,String email, String id) {
+	public AbstractAgent(String name,String email, String id) throws WrongParameterException {
 		checkConstructor();
 		this.name = name;
 		this.email = email;
@@ -40,7 +41,7 @@ public abstract class AbstractAgent implements Agent {
 		return agentKind;
 	}
 	
-	private void checkConstructor() {
+	private void checkConstructor() throws WrongParameterException {
 		Checker.isNull(name);
 		Checker.isEmpty(name);
 		Checker.isNull(email);
