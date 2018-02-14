@@ -1,4 +1,7 @@
 package main.asw.location;
+
+import main.asw.util.Checker;
+
 /**
  * 
  * @author Sergio Faya Fernández
@@ -6,10 +9,12 @@ package main.asw.location;
  */
 public class LatLng {
 
-	public long latitude;
-	public long longitude;
+	public double latitude;
+	public double longitude;
 	
-	public LatLng(long latitude, long longitude) {
+	public LatLng(double latitude, double longitude) {
+		Checker.isNull(latitude);
+		Checker.isNull(longitude);
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}

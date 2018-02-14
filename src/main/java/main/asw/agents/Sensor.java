@@ -1,6 +1,6 @@
 package main.asw.agents;
 
-import main.asw.util.WrongParameterException;
+import main.asw.util.Checker;
 
 /**
  * 
@@ -9,8 +9,16 @@ import main.asw.util.WrongParameterException;
  */
 public class Sensor extends AbstractAgent {
 	
-	public Sensor(String name,String email, String id) throws WrongParameterException {
+	public Sensor(String name,String email, String id)  {
 		super(name, email, id);
 		this.agentKind = SENSOR;
+	}
+	
+	@Override
+	protected boolean validateId(String nif) {
+		//Check repetition in database
+		Checker.isNull(nif);
+		Checker.isEmpty(nif);
+		return true;
 	}
 }
