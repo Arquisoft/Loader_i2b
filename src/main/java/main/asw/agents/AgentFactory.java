@@ -24,7 +24,7 @@ public class AgentFactory {
 		case 3:
 			return new Sensor(name, email, id);
 		default:
-			throw new RuntimeException("This type of user doesn't exist");
+			throw new IllegalArgumentException("This type of user doesn't exist");
 		}
 	}
 
@@ -37,7 +37,7 @@ public class AgentFactory {
 		case 3:
 			return new Sensor(name, email, id);
 		default:
-			throw new RuntimeException("This type of user doesn't exist");
+			throw new IllegalArgumentException("This type of user doesn't exist");
 		}
 	}
 }

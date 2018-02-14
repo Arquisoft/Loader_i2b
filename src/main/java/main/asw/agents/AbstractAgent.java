@@ -1,5 +1,8 @@
 package main.asw.agents;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import main.asw.util.Checker;
 /**
  * 
@@ -14,7 +17,7 @@ public abstract class AbstractAgent implements Agent {
 	protected int agentKind = -1;
 		
 	public AbstractAgent(String name,String email, String id)  {
-		checkConstructor();
+		checkConstructor(name,email,id);
 		this.name = name;
 		setEmail(email);
 		setId(id);
@@ -40,7 +43,7 @@ public abstract class AbstractAgent implements Agent {
 		return agentKind;
 	}
 	
-	private void checkConstructor()  {
+	private void checkConstructor(String name, String email, String id)  {
 		Checker.isNull(name);
 		Checker.isEmpty(name);
 		Checker.isNull(email);
@@ -70,8 +73,8 @@ public abstract class AbstractAgent implements Agent {
 	 */
     private boolean validateEmail(String email) {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-        java.util.regex.Matcher m = p.matcher(email);
+        Pattern p = java.util.regex.Pattern.compile(ePattern);
+        Matcher m = p.matcher(email);
         return m.matches();
     }
 

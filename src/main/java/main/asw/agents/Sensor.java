@@ -16,6 +16,7 @@ public class Sensor extends AbstractAgent {
 	
 	@Override
 	protected boolean validateId(String nif) {
+		//Check repetition in database
 		Checker.isNull(nif);
 		Checker.isEmpty(nif);
 		return true;
