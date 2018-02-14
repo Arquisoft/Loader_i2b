@@ -21,7 +21,7 @@ public class AgentsTest {
 	}
 
 	// Factory
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testCreateInexistingTypeAgent() {
 		AgentFactory.createAgent(0, "person", "person@gmail.com", "05936542N", nava);
 	}
@@ -94,7 +94,7 @@ public class AgentsTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testCreateEntityEmrptyName() {
+	public void testCreateEntityEmptyName() {
 		AgentFactory.createAgent(Agent.ENTITY, "", "entity@gmail.com", "05936542N");
 	}
 
@@ -130,7 +130,7 @@ public class AgentsTest {
 
 	@Test
 	public void testCreateEntityRightLocation() {
-		AgentFactory.createAgent(Agent.ENTITY, "entity", "entitygmail.com", "05936545452N", oviedo);
+		AgentFactory.createAgent(Agent.ENTITY, "entity", "entity@gmail.com", "05936542N", oviedo);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -141,21 +141,41 @@ public class AgentsTest {
 	// sensors
 	@Test
 	public void testCreateSensorRight() {
-		"sensor","sensor@gmail.com","11402364E"
+		AgentFactory.createAgent(Agent.SENSOR,"sensor","sensor@gmail.com","11402364E");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateSensorWrongName() {
+		AgentFactory.createAgent(Agent.SENSOR,null,"sensor@gmail.com","11402364E");
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateSensorEmptyName() {
+		AgentFactory.createAgent(Agent.SENSOR,"","sensor@gmail.com","11402364E");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateSensorWrongFormatEmail() {
+		AgentFactory.createAgent(Agent.SENSOR,"sensor","sensorgmail.com","11402364E");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateSensorWrongEmail() {
-
+		AgentFactory.createAgent(Agent.SENSOR,"sensor",null,"11402364E");
 	}
-
+	
 	@Test(expected = IllegalArgumentException.class)
-	public void testCreateSensorWrongIdLetter() {
-
+	public void testCreateSensorEmptyEmail() {
+		AgentFactory.createAgent(Agent.SENSOR,"sensor","","11402364E");
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateSensorWrongId() {
+		AgentFactory.createAgent(Agent.SENSOR,"sensor","sensor@gmail.com",null);
+	}	
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateSensorWrongIdLenght() {
-
+		AgentFactory.createAgent(Agent.SENSOR,"sensor","sensor@gmail.com","");
 	}
 }
