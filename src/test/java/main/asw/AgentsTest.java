@@ -1,6 +1,6 @@
 package main.asw;
 
-import java.text.ParseException;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
@@ -29,7 +29,7 @@ public class AgentsTest {
 	// people
 	@Test
 	public void testCreatePersonRight() {
-		AgentFactory.createAgent(Agent.PERSON, "person", "person@gmail.com", "05936542N");
+		assertNotNull(AgentFactory.createAgent(Agent.PERSON, "person", "person@gmail.com", "05936542N"));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -74,7 +74,7 @@ public class AgentsTest {
 
 	@Test
 	public void testCreatePersonRightLocation() {
-		AgentFactory.createAgent(Agent.PERSON, "person", "person@gmail.com", "05936542N", oviedo);
+		assertNotNull(AgentFactory.createAgent(Agent.PERSON, "person", "person@gmail.com", "05936542N", oviedo));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -85,7 +85,7 @@ public class AgentsTest {
 	// entities
 	@Test
 	public void testCreateEntityRight() {
-		AgentFactory.createAgent(Agent.ENTITY, "entity", "entity@gmail.com", "05936542N");
+		assertNotNull(AgentFactory.createAgent(Agent.ENTITY, "entity", "entity@gmail.com", "05936542N"));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -130,7 +130,7 @@ public class AgentsTest {
 
 	@Test
 	public void testCreateEntityRightLocation() {
-		AgentFactory.createAgent(Agent.ENTITY, "entity", "entity@gmail.com", "05936542N", oviedo);
+		assertNotNull(AgentFactory.createAgent(Agent.ENTITY, "entity", "entity@gmail.com", "05936542N", oviedo));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -141,41 +141,41 @@ public class AgentsTest {
 	// sensors
 	@Test
 	public void testCreateSensorRight() {
-		AgentFactory.createAgent(Agent.SENSOR,"sensor","sensor@gmail.com","11402364E");
+		assertNotNull(AgentFactory.createAgent(Agent.SENSOR, "sensor", "sensor@gmail.com", "11402364E"));
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateSensorWrongName() {
-		AgentFactory.createAgent(Agent.SENSOR,null,"sensor@gmail.com","11402364E");
+		AgentFactory.createAgent(Agent.SENSOR, null, "sensor@gmail.com", "11402364E");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateSensorEmptyName() {
-		AgentFactory.createAgent(Agent.SENSOR,"","sensor@gmail.com","11402364E");
+		AgentFactory.createAgent(Agent.SENSOR, "", "sensor@gmail.com", "11402364E");
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateSensorWrongFormatEmail() {
-		AgentFactory.createAgent(Agent.SENSOR,"sensor","sensorgmail.com","11402364E");
+		AgentFactory.createAgent(Agent.SENSOR, "sensor", "sensorgmail.com", "11402364E");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateSensorWrongEmail() {
-		AgentFactory.createAgent(Agent.SENSOR,"sensor",null,"11402364E");
+		AgentFactory.createAgent(Agent.SENSOR, "sensor", null, "11402364E");
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateSensorEmptyEmail() {
-		AgentFactory.createAgent(Agent.SENSOR,"sensor","","11402364E");
+		AgentFactory.createAgent(Agent.SENSOR, "sensor", "", "11402364E");
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateSensorWrongId() {
-		AgentFactory.createAgent(Agent.SENSOR,"sensor","sensor@gmail.com",null);
-	}	
+		AgentFactory.createAgent(Agent.SENSOR, "sensor", "sensor@gmail.com", null);
+	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateSensorWrongIdLenght() {
-		AgentFactory.createAgent(Agent.SENSOR,"sensor","sensor@gmail.com","");
+		AgentFactory.createAgent(Agent.SENSOR, "sensor", "sensor@gmail.com", "");
 	}
 }
