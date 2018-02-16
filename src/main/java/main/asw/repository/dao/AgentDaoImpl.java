@@ -15,7 +15,7 @@ import main.asw.agents.Agent;
  * @author Sergio Faya Fernandez
  *
  */
-class AgentDaoImpl implements AgentDao {
+public class AgentDaoImpl implements AgentDao {
 
     private final static org.slf4j.Logger log = LoggerFactory.getLogger(AgentDao.class);
 
