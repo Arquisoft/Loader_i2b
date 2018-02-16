@@ -1,4 +1,4 @@
-package main.asw.repository.agentDao;
+package main.asw.repository.dao;
 
 import main.asw.agents.Agent;
 
