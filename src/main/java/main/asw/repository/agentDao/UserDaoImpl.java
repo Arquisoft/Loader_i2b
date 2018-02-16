@@ -39,7 +39,13 @@ class AgentDaoImpl implements AgentDao {
     @Override
     public boolean saveAgent(Agent agent) {
         if (coll.find(eq("agentId", agent.getId())).first() == null) {
-            Document doc = agent.getDocument();
+            Document doc = new Document()
+            		.append("name", agent.getName())
+            		.append("email", agent.getEmail())
+            		.append("id", agent.getId())
+            		.append("agentKind", agent.getAgentKind())
+            		.append("location", agent.getLocation());
+            
             coll.insertOne(doc);
             log.info("Agent with id = " + agent.getId() + " added to the database");
             return true;
