@@ -10,7 +10,7 @@ import java.util.Date;
  * @author nicolas
  * @author MIGUEL
  */
-public class User {
+public class Use {
 
     private String firstName, lastName, email, address, nationality, nif;
     private Date dateOfBirth;

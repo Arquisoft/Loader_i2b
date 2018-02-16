@@ -18,4 +18,10 @@ public class LatLng {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
+	
+	@Override
+	public String toString() {
+		return "Location{Latitude='"+latitude+"',"+
+				"Longitude='"+longitude+"'}";
+	}
 }
