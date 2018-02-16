@@ -1,5 +1,7 @@
 package main.asw.agents;
 
+import org.bson.Document;
+
 import main.asw.util.Checker;
 
 /**
@@ -20,5 +22,14 @@ public class Sensor extends AbstractAgent {
 		Checker.isNull(nif);
 		Checker.isEmpty(nif);
 		return true;
+	}
+
+	@Override
+	public Document getDocument() {
+		 Document doc = new Document("name", getName())
+                 .append("email", getEmail())
+                 .append("agentId", getId())
+                 .append("agentKind", getAgentKind());
+		 return doc;
 	}
 }

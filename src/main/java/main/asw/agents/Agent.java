@@ -1,5 +1,7 @@
 package main.asw.agents;
 
+import org.bson.Document;
+
 public interface Agent {
 	
 	public static final int PERSON = 1;
@@ -14,4 +16,5 @@ public interface Agent {
 	
 	int getAgentKind();
 	
+	Document getDocument();
 }

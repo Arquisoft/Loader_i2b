@@ -1,5 +1,7 @@
 package main.asw.agents;
 
+import org.bson.Document;
+
 import main.asw.location.LatLng;
 import main.asw.util.Checker;
 
@@ -30,6 +32,16 @@ public class Person extends AbstractAgent {
 	@Override
 	public String toString() {
 		return "{"+extensibleToString() + ", "+location+"}";
+	}
+
+	@Override
+	public Document getDocument() {
+		 Document doc = new Document("name", getName())
+                 .append("email", getEmail())
+                 .append("agentId", getId())
+                 .append("agentKind", getAgentKind())
+                 .append("location", getLocation());
+		 return doc;
 	}
 
 }
