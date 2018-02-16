@@ -26,4 +26,9 @@ public class Entity extends AbstractAgent {
 	public LatLng getLocation() {
 		return location;
 	}
+	
+	@Override
+	public String toString() {
+		return "{"+extensibleToString() + ", "+location+"}";
+	}
 }

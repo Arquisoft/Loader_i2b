@@ -53,6 +53,29 @@ public abstract class AbstractAgent implements Agent {
 	}
 
 	/**
+	 * The intend of this method is to make easier the modification of the toString method
+	 * The format of the toString will be in JSON object format
+	 * {
+	 *  extensibleToString()
+	 *  location = 'location'
+	 *  ,...
+	 * }
+	 * @return agent common fields without {}
+	 */
+	protected String extensibleToString() {
+		String className = this.getClass().getSimpleName(); 
+		return className+ " Name='"+name+"'"
+						+ ",Email='"+email+"'"
+						+ ",ID='"+id +"'"
+						+ ",AgentKind='"+agentKind+"'";
+	}
+	
+	@Override
+	public String toString() {
+		return "{"+extensibleToString()+"}";
+	}
+	
+	/**
      * This is a copy of a 2017 class called user.
      * @author nicolas
 	 * @author MIGUEL
