@@ -1,5 +1,7 @@
 package main.asw.parser;
 
+import main.asw.agents.Agent;
+import main.asw.location.LatLng;
 import main.asw.repository.DBUpdate;
 import main.asw.repository.RepositoryFactory;
 import main.asw.user.User;
@@ -63,9 +65,51 @@ class ParserImpl implements Parser {
             }
 
         }
-        this.users = users;
+        this.users = users;	
+    }
+    
+    /**
+     * 	public Agent(int agentKind, String name,String email, String id,LatLng location) {
+     * @return
+     * @throws ParseException
+     */
+    private Agent rowToAgent() throws ParseException {
+        String kindstr = dataSource.getCell(0);
+        int kind = Integer.parseInt(kindstr);
+        String name = dataSource.getCell(1);
+        String email = dataSource.getCell(2);
+        String id = dataSource.getCell(3);
+        if(kind == 2){ // is optional
+        	
+        }
+        String locationstr = dataSource.getCell(4); // convert to LatLng
+        LatLng location = parseLocation(locationstr);
+
+        return new Agent(kind,
+                name,
+                email,
+                id,
+                location);
+
     }
 
+
+    /**
+     * @author PBalbuena
+     * @param locationstr
+     * @return
+     */
+    private LatLng parseLocation(String locationstr) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	/**
+     * CLASE A SUSTITUIR
+     * @return
+     * @throws ParseException
+     */
     private User rowToUser() throws ParseException {
         String name = dataSource.getCell(0);
         String surname = dataSource.getCell(1);
