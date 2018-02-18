@@ -1,13 +1,13 @@
 package main.asw.parser;
 
-import main.asw.agents.Agent;
-import main.asw.user.User;
-import org.junit.Test;
+import static junit.framework.TestCase.assertEquals;
 
 import java.io.IOException;
 import java.text.ParseException;
 
-import static junit.framework.TestCase.assertEquals;
+import org.junit.Test;
+
+import main.asw.agents.Agent;
 
 /**
  * Created by nicolas on 15/02/17.
@@ -63,17 +63,20 @@ public class ParserTest {
         }
 
         String baseName = "Prueba";
+       // String baseSurname = "Apellido";
         String baseEmail = "prueba";
-        int baseAgentKind = 1;
+       // String baseStreet = "c/Prueba n0 1a";
+       // String baseCountry = "España";
         parser.readList();
-        assertEquals(20, parser.getUsers().size());
-        for (int i = 0; i < parser.getUsers().size(); i++) {
+        assertEquals(20, parser.getAgents().size());
+        for (int i = 0; i < parser.getAgents().size(); i++) {
             String index = (i + 1 < 10) ? "0" + (i + 1) : (i + 1) + "";
-            Agent agent = parser.getUsers().get(i);
-            assertEquals(baseName + index, agent.getName());
-            assertEquals(baseEmail + index + "@prueba.es", agent.getEmail());
-            assertEquals(baseAgentKind, agent.getAgentKind());
-            assertEquals(expected, agent.get);
+            Agent user = parser.getAgents().get(i);
+            assertEquals(baseName + index, user.getName());
+          //  assertEquals(baseSurname + index, user.getLastName());
+            assertEquals(baseEmail + index + "@prueba.es", user.getEmail());
+          //  assertEquals(baseStreet, user.getAddress());
+          //  assertEquals(baseCountry, user.getNationality());
         }
     }
 
@@ -86,14 +89,14 @@ public class ParserTest {
     public void testMoreLines() throws IOException, ParseException {
         parser = ParserFactory.getParser(BASE_PATH + TEST_MORE_LINES);
         parser.readList();
-        assertEquals(0, parser.getUsers().size());
+        assertEquals(0, parser.getAgents().size());
     }
 
     @Test
     public void testLessLines() throws IOException, ParseException {
         parser = ParserFactory.getParser(BASE_PATH + TEST_LESS_LINES);
         parser.readList();
-        assertEquals(0, parser.getUsers().size());
+        assertEquals(0, parser.getAgents().size());
     }
 
 /* Not needed. It's being tested on PersistenceTest class */

@@ -3,6 +3,8 @@ package main.asw.repository;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+
+import main.asw.agents.Agent;
 import main.asw.user.User;
 import org.bson.Document;
 import org.junit.After;
@@ -25,7 +27,7 @@ public class PersistenceTest {
     private static MongoClient mongoClient;
     private static MongoDatabase db;
     private static MongoCollection<Document> coll;
-    private List<User> users;
+    private List<Agent> users;
     private long oldCount;
     private long newCount;
 
@@ -41,7 +43,7 @@ public class PersistenceTest {
     @After
     public void tearDown(){
         for (int i = 0; i < users.size(); i++){
-            Document query = new Document("userId", users.get(i).getNif());
+            Document query = new Document("userId", users.get(i).getId());
             coll.deleteMany(query);
         }
     }
@@ -56,7 +58,7 @@ public class PersistenceTest {
         //Only the non-repeated users should be in the database. We tried to insert one duplicated
         assertTrue(newCount == oldCount+users.size()-1);
 
-        Document query = new Document("userId", users.get(3).getNif());
+        Document query = new Document("userId", users.get(3).getId());
         assertEquals((coll.count(query)), 1);
     }
 
@@ -66,49 +68,34 @@ public class PersistenceTest {
     private void insertUsers(){
         oldCount = coll.count();
 
-        users.add(new User("Miguel",
-                "García",
+        users.add(new Agent(1,
+        		"Miguel",
                 "mg@email.com",
-                new Date(),
-                "c/ circus",
-                "España",
                 "66863955B")
         );
 
-        users.add(new User("Jorge",
-                "López",
+        users.add(new Agent(1,
+        		"Jorge",
                 "jl@email.com",
-                new Date(),
-                "c/ road",
-                "España",
                 "37165071S")
         );
 
-        users.add(new User("Nicolás",
-                "Pascual",
+        users.add(new Agent(1,
+        		"Nicolás",
                 "np@email.com",
-                new Date(),
-                "c/ venue",
-                "España",
                 "94875755L")
         );
 
-        users.add(new User("Pablo",
-                "García",
+        users.add(new Agent(1,
+        		"Pablo",
                 "pg@email.com",
-                new Date(),
-                "c/ street",
-                "España",
                 "46402573G")
         );
 
         //Same userId
-        users.add(new User("Pablo",
-                "García",
+        users.add(new Agent(1,
+        		"Pablo",
                 "pg@email.com",
-                new Date(),
-                "c/ street",
-                "España",
                 "46402573G")
         );
 

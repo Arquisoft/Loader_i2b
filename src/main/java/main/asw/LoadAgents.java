@@ -17,7 +17,6 @@ import main.asw.repository.PersistenceFactory;
  */
 
 public class LoadAgents {
-
 	
 	private final static Logger log = LoggerFactory.getLogger(LoadAgents.class);
 	
