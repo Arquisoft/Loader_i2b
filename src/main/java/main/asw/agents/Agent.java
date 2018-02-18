@@ -3,6 +3,7 @@ package main.asw.agents;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import main.asw.encryption.EncryptionUtils;
 import main.asw.location.LatLng;
 import main.asw.util.Checker;
 
@@ -11,24 +12,26 @@ import main.asw.util.Checker;
  * @author Sergio Faya Fernandez
  *
  */
-public class Agent  {
+public class Agent {
 
 	private String name;
 	private String email;
 	private String id;
 	private int agentKind;
 	private LatLng location;
+	private String password, unencryptedPass;
 
-	public Agent(int agentKind, String name,String email, String id)  {
-		checkConstructor(name,email,id);
+	public Agent(int agentKind, String name, String email, String id) {
+		checkConstructor(name, email, id);
+		generatePassword();
 		this.name = name;
 		this.agentKind = agentKind;
 		setEmail(email);
 		setId(id);
 	}
-	
-	public Agent(int agentKind, String name,String email, String id,LatLng location) {
-		this(agentKind,name, email, id);	
+
+	public Agent(int agentKind, String name, String email, String id, LatLng location) {
+		this(agentKind, name, email, id);
 		this.location = location;
 	}
 
@@ -40,7 +43,12 @@ public class Agent  {
 		Checker.isNull(id);
 		Checker.isEmpty(id);
 	}
-	
+
+	private void generatePassword() {
+		this.unencryptedPass = EncryptionUtils.getInstance().generatePassword();
+		this.password = EncryptionUtils.getInstance().encryptPassword(unencryptedPass);
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -60,12 +68,19 @@ public class Agent  {
 	public LatLng getLocation() {
 		return location;
 	}
+
+	public String getPasswordUnencripted() {
+		return unencryptedPass;
+	}
 	
+	public String getPassword() {
+		return password;
+	}
+
 	@Override
 	public String toString() {
-		return "Agent{ Name='" + name + "'" + ",Email='" + email + "'" + ",ID='" + id + "'" 
-				+ ",AgentKind='"+ agentKind +"'"
-				+ ",Location='"+ location + "'}";
+		return "Agent{ Name='" + name + "'" + ",Email='" + email + "'" + ",ID='" + id + "'" + ",AgentKind='" + agentKind
+				+ "'" + ",Location='" + location + "'}";
 	}
 
 	/**

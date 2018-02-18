@@ -1,8 +1,8 @@
 package main.asw.report;
 
-import main.asw.user.User;
-
 import java.util.List;
+
+import main.asw.agents.Agent;
 
 /**
  * @author Pineirin
@@ -11,9 +11,9 @@ import java.util.List;
 public interface ReportWriter {
 
     /**
-     * Writes a reports in txt word and pdf of the different users.
+     * Writes a reports in txt word and pdf of the different agents.
      *
-     * @param users the users whose information we need to report.
+     * @param agents whose information we need to report.
      */
-    void writeReport(List<User> users);
+    void writeReport(List<Agent> agents);
 }

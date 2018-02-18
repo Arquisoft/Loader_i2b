@@ -1,19 +1,19 @@
 package main.asw.repository;
 
-import main.asw.user.User;
-
 import java.util.List;
+
+import main.asw.agents.Agent;
 
 public interface DBUpdate {
 
     /**
-     * Inserts each one of the given users into the database
-     * @param users
+     * Inserts each one of the given agents into the database
+     * @param agents
      */
-    void insert(List<User> users);
+    void insert(List<Agent> agents);
 
     /**
-     * Generates the reports for the users
+     * Generates the reports for the agents
      */
     void writeReport();
 

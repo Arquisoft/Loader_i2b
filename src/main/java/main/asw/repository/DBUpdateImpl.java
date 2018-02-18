@@ -1,25 +1,26 @@
 package main.asw.repository;
 
 
-import main.asw.report.ReportFactory;
-import main.asw.report.ReportWriter;
-import main.asw.user.User;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.asw.agents.Agent;
+import main.asw.report.ReportFactory;
+import main.asw.report.ReportWriter;
+import main.asw.repository.dao.AgentDao;
+
 class DBUpdateImpl implements DBUpdate {
 
-    private List<User> correctUsers;
+    private List<Agent> correctAgents;
 
     @Override
-    public void insert(List<User> users) {
-        UserDao ud = PersistenceFactory.getUserDAO();
-        this.correctUsers = new ArrayList<>();
-        for (User u : users) {
-            if(ud.saveUser(u)) {
-                correctUsers.add(u);
+    public void insert(List<Agent> agents) {
+        AgentDao agentDao = PersistenceFactory.getAgentDao();
+        this.correctAgents = new ArrayList<>();
+        for (Agent a: agents) {
+            if(agentDao.saveAgent(a)) {
+            	correctAgents.add(a);
             }
         }
     }
@@ -30,9 +31,9 @@ class DBUpdateImpl implements DBUpdate {
         ReportWriter textWriter = ReportFactory.createTxtWriter();
         ReportWriter docxWriter = ReportFactory.createDocxWriter();
         ReportWriter pdfWriter = ReportFactory.createPdfWriter();
-        textWriter.writeReport(correctUsers);
-        docxWriter.writeReport(correctUsers);
-        pdfWriter.writeReport(correctUsers);
+        textWriter.writeReport(correctAgents);
+        docxWriter.writeReport(correctAgents);
+        pdfWriter.writeReport(correctAgents);
     }
 
     private void generateDirectories() {
@@ -44,4 +45,5 @@ class DBUpdateImpl implements DBUpdate {
         dir2.mkdirs();
         dir3.mkdirs();
     }
+
 }
