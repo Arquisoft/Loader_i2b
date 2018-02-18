@@ -1,9 +1,9 @@
 package main.asw.repository;
 
-import main.asw.user.User;
+import main.asw.agents.Agent;
 
 /**
- * Created by MIGUEL on 16/02/2017.
+ * @author Balbuena
  */
 public interface UserDao {
 
@@ -14,7 +14,7 @@ public interface UserDao {
      * @return  true if the user could be saved
      *          false otherwise (if the user already exists in the DB)
      */
-    boolean saveUser(User u);
+    boolean saveUser(Agent u);
 
     void setMongoHost(String arg);
 }

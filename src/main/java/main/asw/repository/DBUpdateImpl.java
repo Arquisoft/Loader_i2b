@@ -1,23 +1,23 @@
 package main.asw.repository;
 
 
-import main.asw.report.ReportFactory;
-import main.asw.report.ReportWriter;
-import main.asw.user.User;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.asw.agents.Agent;
+import main.asw.report.ReportFactory;
+import main.asw.report.ReportWriter;
+
 class DBUpdateImpl implements DBUpdate {
 
-    private List<User> correctUsers;
+    private List<Agent> correctUsers;
 
     @Override
-    public void insert(List<User> users) {
+    public void insert(List<Agent> users) {
         UserDao ud = PersistenceFactory.getUserDAO();
         this.correctUsers = new ArrayList<>();
-        for (User u : users) {
+        for (Agent u : users) {
             if(ud.saveUser(u)) {
                 correctUsers.add(u);
             }

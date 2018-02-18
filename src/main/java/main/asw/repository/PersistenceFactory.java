@@ -1,7 +1,7 @@
 package main.asw.repository;
 
 /**
- * Created by MIGUEL on 16/02/2017.
+ * @author Balbuena
  */
 public class PersistenceFactory {
 
