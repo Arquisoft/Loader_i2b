@@ -43,7 +43,7 @@ public class AgentDaoImpl implements AgentDao {
             Document doc = new Document()
             		.append("name", agent.getName())
             		.append("email", agent.getEmail())
-            		.append("id", agent.getId())
+            		.append("agentId", agent.getId())
             		.append("agentKind", agent.getAgentKind())
             		.append("location", agent.getLocation());
             
