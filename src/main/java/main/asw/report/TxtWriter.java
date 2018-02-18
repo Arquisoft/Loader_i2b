@@ -31,10 +31,10 @@ class TxtWriter implements ReportWriter {
                 strb.append("Greetings: " + agent.getName()+ ".\n");
                 strb.append("This is your personal information that we have received: \n");
                 strb.append("Type of Agent: " + agent.getAgentKind()+ ".");
-                strb.append("ID: " + agent.getId() + ".");
+                strb.append("Email: " + agent.getEmail() + ".");
                 strb.append("Location: "+agent.getLocation());
                 strb.append("\n");
-                strb.append("Your user name is your email: " + agent.getEmail() + ".");
+                strb.append("Your user name is your id: " + agent.getId() + ".");
                 strb.append("Your password is: " + agent.getPasswordUnencripted());
                 bufferedWriter.write(strb.toString());
                 

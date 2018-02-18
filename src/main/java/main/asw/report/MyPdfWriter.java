@@ -63,10 +63,10 @@ class MyPdfWriter implements ReportWriter {
         document.add(new Paragraph("Greetings: " + agent.getName() + "."));
         document.add(new Paragraph("This is your personal information that we have received: "));
         document.add(new Paragraph("Type of Agent: " + agent.getAgentKind()+ "."));
-        document.add(new Paragraph("ID: " + agent.getId() + "."));
+        document.add(new Paragraph("Email: " + agent.getEmail() + "."));
         document.add(new Paragraph("Location: "+agent.getLocation()));
         document.add(new Paragraph());
-        document.add(new Paragraph("Your user name is your email: " + agent.getEmail() + "."));
+        document.add(new Paragraph("Your user name is your id: " + agent.getId() + "."));
         document.add(new Paragraph("Your password is: " + agent.getPasswordUnencripted()));
     }
 }

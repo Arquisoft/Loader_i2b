@@ -27,7 +27,7 @@ class DocxWriter implements ReportWriter {
         FileOutputStream outputStream = null;
         for (Agent agent: agents) {
             try {
-                outputStream = new FileOutputStream("Generated/GeneratedDocx/" + agent.getEmail() + ".docx");
+                outputStream = new FileOutputStream("Generated/GeneratedDocx/" + agent.getId() + ".docx");
                 XWPFDocument document = new XWPFDocument();
                 XWPFParagraph paragraph = document.createParagraph();
                 paragraph.setAlignment(ParagraphAlignment.LEFT);
@@ -75,10 +75,10 @@ class DocxWriter implements ReportWriter {
         addLine(run, "Greetings: " + agent.getName() + ".");
         addLine(run, "This is your personal information that we have received: ");
         addLine(run, "Type of Agent: " + agent.getAgentKind()+ ".");
-        addLine(run, "ID: " + agent.getId() + ".");
+        addLine(run, "Email: " + agent.getEmail() + ".");
         addLine(run, "Location: "+agent.getLocation());
         run.addBreak();
-        addLine(run, "Your user name is your email: " + agent.getEmail() + ".");
+        addLine(run, "Your user name is your id: " + agent.getId() + ".");
         addLine(run, "Your password is: " + agent.getPasswordUnencripted());
         return run;
     }
