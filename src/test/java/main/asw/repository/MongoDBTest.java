@@ -1,20 +1,22 @@
 package main.asw.repository;
 
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import de.flapdoodle.embed.mongo.MongodExecutable;
-import de.flapdoodle.embed.mongo.MongodProcess;
-import main.asw.user.User;
+import static junit.framework.TestCase.assertEquals;
+
+import java.util.Date;
+
 import org.bson.BsonDocument;
 import org.bson.Document;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Date;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 
-import static junit.framework.TestCase.assertEquals;
+import de.flapdoodle.embed.mongo.MongodExecutable;
+import de.flapdoodle.embed.mongo.MongodProcess;
+import main.asw.agents.Agent;
 
 /**
  * Created by MIGUEL on 16/02/2017.
@@ -65,15 +67,13 @@ public class MongoDBTest {
         MongoDatabase db = mongoClient.getDatabase("test");
         db.getCollection("users").deleteMany(new BsonDocument());
         MongoCollection<Document> coll = db.getCollection("users");
-        User u = new User("Miguel", "García", "mg@email.com", new Date(), "c/ street", "España", "71735454H");
-        Document doc = new Document("name", u.getFirstName())
-                .append("surname", u.getLastName())
-                .append("email", u.getEmail())
-                .append("nationality", u.getNationality())
-                .append("address", u.getNationality())
-                .append("dni", u.getNif())
-                .append("date", u.getDateOfBirth())
-                .append("password", u.getPassword());
+        Agent agent = new Agent(0,"Person","person@gmail.com","09820646B");
+        Document doc = new Document("name", agent.getName())
+        		.append("agentKind", agent.getAgentKind())
+                .append("dni", agent.getId())
+        		.append("email", agent.getEmail())
+        		.append("location", agent.getLocation())
+                .append("password", agent.getPassword());
         coll.insertOne(doc);
 
         assertEquals(1, coll.count());
