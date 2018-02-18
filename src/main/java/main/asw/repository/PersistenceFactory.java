@@ -5,9 +5,9 @@ package main.asw.repository;
  */
 public class PersistenceFactory {
 
-    private static UserDao userDao = new UserDaoImpl();
+    private static AgentDao userDao = new AgentDaoImpl();
 
-    public static UserDao getUserDAO() {
+    public static AgentDao getUserDAO() {
         return userDao;
     }
 

@@ -5,7 +5,7 @@ import main.asw.agents.Agent;
 /**
  * @author Balbuena
  */
-public interface UserDao {
+public interface AgentDao {
 
     /**
      * Saves a given user in the database

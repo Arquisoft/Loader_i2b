@@ -139,14 +139,6 @@ class ParserImpl implements Parser {
 
 
 
-    private Date parseDate(String birthDateString) throws ParseException {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        Date date;
-        df.setLenient(false);
-        date = df.parse(birthDateString);
-        return date;
-    }
-
     public List<Agent> getUsers() {
         return users;
     }

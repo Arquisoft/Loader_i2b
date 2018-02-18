@@ -1,29 +1,29 @@
 package main.asw.repository;
 
+import static com.mongodb.client.model.Filters.eq;
+
+import org.bson.Document;
+import org.slf4j.LoggerFactory;
+
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import main.asw.agents.Agent;
-import main.asw.user.User;
-import org.bson.Document;
-import org.slf4j.LoggerFactory;
-
-import static com.mongodb.client.model.Filters.eq;
 
 /**
  * Created by MIGUEL on 16/02/2017.
  */
-class UserDaoImpl implements UserDao {
+class AgentDaoImpl implements AgentDao {
 
-    private final static org.slf4j.Logger log = LoggerFactory.getLogger(UserDao.class);
+    private final static org.slf4j.Logger log = LoggerFactory.getLogger(AgentDao.class);
 
     private MongoClient mongoClient = new MongoClient("localhost", 27017);
     private MongoDatabase db = mongoClient.getDatabase("aswdb");
     private MongoCollection<Document> coll = db.getCollection("users");
 
 
-    public UserDaoImpl(){
+    public AgentDaoImpl(){
         mongoClient = new MongoClient("localhost", 27017);
         db = mongoClient.getDatabase("aswdb");
         coll = db.getCollection("users");

@@ -15,9 +15,9 @@ import java.io.IOException;
  * @author MIGUEL
  */
 
-public class LoadUsers {
+public class LoadAgents {
 
-    private final static Logger log = LoggerFactory.getLogger(LoadUsers.class);
+    private final static Logger log = LoggerFactory.getLogger(LoadAgents.class);
 
     public static void main(String... args) {
         if (args.length == 2) {

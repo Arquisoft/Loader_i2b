@@ -15,7 +15,7 @@ class DBUpdateImpl implements DBUpdate {
 
     @Override
     public void insert(List<Agent> users) {
-        UserDao ud = PersistenceFactory.getUserDAO();
+        AgentDao ud = PersistenceFactory.getUserDAO();
         this.correctUsers = new ArrayList<>();
         for (Agent u : users) {
             if(ud.saveUser(u)) {
