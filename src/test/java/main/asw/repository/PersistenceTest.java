@@ -1,4 +1,4 @@
-package main.asw.repository;
+   package main.asw.repository;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
@@ -26,7 +26,7 @@ public class PersistenceTest {
     private static MongoClient mongoClient;
     private static MongoDatabase db;
     private static MongoCollection<Document> coll;
-    private List<Agent> users;
+    private List<Agent> agents;
     private long oldCount;
     private long newCount;
 
@@ -35,14 +35,14 @@ public class PersistenceTest {
         dbUpdate = RepositoryFactory.getDBUpdate();
         mongoClient = new MongoClient("localhost", 27017);
         db = mongoClient.getDatabase("aswdb");
-        coll = db.getCollection("users");
-        users = new ArrayList<>();
+        coll = db.getCollection("agents");
+        agents = new ArrayList<>();
     }
 
     @After
     public void tearDown(){
-        for (int i = 0; i < users.size(); i++){
-            Document query = new Document("userId", users.get(i).getId());
+        for (int i = 0; i < agents.size(); i++){
+            Document query = new Document("agentId", agents.get(i).getId());
             coll.deleteMany(query);
         }
     }
@@ -55,9 +55,9 @@ public class PersistenceTest {
     public void testInsert(){
         insertUsers();
         //Only the non-repeated users should be in the database. We tried to insert one duplicated
-        assertTrue(newCount == oldCount+users.size()-1);
+        assertTrue(newCount == oldCount+agents.size()-1);
 
-        Document query = new Document("userId", users.get(3).getId());
+        Document query = new Document("agentId", agents.get(3).getId());
         assertEquals((coll.count(query)), 1);
     }
 
@@ -67,38 +67,38 @@ public class PersistenceTest {
     private void insertUsers(){
         oldCount = coll.count();
 
-        users.add(new Agent(1,
+        agents.add(new Agent(1,
         		"Miguel",
                 "mg@email.com",
                 "66863955B")
         );
 
-        users.add(new Agent(1,
+        agents.add(new Agent(1,
         		"Jorge",
                 "jl@email.com",
                 "37165071S")
         );
 
-        users.add(new Agent(1,
+        agents.add(new Agent(1,
         		"Nicolás",
                 "np@email.com",
                 "94875755L")
         );
 
-        users.add(new Agent(1,
+        agents.add(new Agent(1,
         		"Pablo",
                 "pg@email.com",
                 "46402573G")
         );
 
         //Same userId
-        users.add(new Agent(1,
+        agents.add(new Agent(1,
         		"Pablo",
                 "pg@email.com",
                 "46402573G")
         );
 
-        dbUpdate.insert(users);
+        dbUpdate.insert(agents);
 
         newCount = coll.count();
     }
