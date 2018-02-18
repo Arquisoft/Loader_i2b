@@ -1,30 +1,30 @@
 package main.asw;
 
-import main.asw.parser.Parser;
-import main.asw.parser.ParserFactory;
-import main.asw.repository.PersistenceFactory;
+import java.io.IOException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
+import main.asw.parser.Parser;
+import main.asw.parser.ParserFactory;
+import main.asw.repository.PersistenceFactory;
 
 /**
- * Main application
+ * Refactored by Sergio Faya Fernandez (changed user by agents)
  *
  * @author Labra
  * @author MIGUEL
  */
 
-public class LoadUsers {
+public class LoadAgents {
 
-    private final static Logger log = LoggerFactory.getLogger(LoadUsers.class);
-
-    public static void main(String... args) {
+	
+	private final static Logger log = LoggerFactory.getLogger(LoadAgents.class);
+	
+	public static void main(String... args) {
         if (args.length == 2) {
             try {
-                PersistenceFactory.getUserDAO().setMongoHost(args[1]);
-
-
+                PersistenceFactory.getAgentDao().setMongoHost(args[1]);
                 Parser parser = ParserFactory.getParser(args[0]);
                 parser.readList();
                 parser.insert();
@@ -42,5 +42,4 @@ public class LoadUsers {
                 "\t <xls path> \t <mongo host>"
         );
     }
-
 }
