@@ -1,5 +1,6 @@
 package main.asw.parser;
 
+import main.asw.agents.Agent;
 import main.asw.user.User;
 import org.junit.Test;
 
@@ -62,20 +63,20 @@ public class ParserTest {
         }
 
         String baseName = "Prueba";
-        String baseSurname = "Apellido";
+       // String baseSurname = "Apellido";
         String baseEmail = "prueba";
-        String baseStreet = "c/Prueba n0 1a";
-        String baseCountry = "España";
+       // String baseStreet = "c/Prueba n0 1a";
+       // String baseCountry = "España";
         parser.readList();
         assertEquals(20, parser.getUsers().size());
         for (int i = 0; i < parser.getUsers().size(); i++) {
             String index = (i + 1 < 10) ? "0" + (i + 1) : (i + 1) + "";
-            User user = parser.getUsers().get(i);
-            assertEquals(baseName + index, user.getFirstName());
-            assertEquals(baseSurname + index, user.getLastName());
+            Agent user = parser.getUsers().get(i);
+            assertEquals(baseName + index, user.getName());
+          //  assertEquals(baseSurname + index, user.getLastName());
             assertEquals(baseEmail + index + "@prueba.es", user.getEmail());
-            assertEquals(baseStreet, user.getAddress());
-            assertEquals(baseCountry, user.getNationality());
+          //  assertEquals(baseStreet, user.getAddress());
+          //  assertEquals(baseCountry, user.getNationality());
         }
     }
 

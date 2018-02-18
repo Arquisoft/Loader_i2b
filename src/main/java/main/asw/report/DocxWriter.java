@@ -1,6 +1,9 @@
 package main.asw.report;
 
-import main.asw.user.User;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
@@ -8,9 +11,8 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.List;
+import main.asw.agents.Agent;
+import main.asw.user.User;
 
 /**
  * @author Pineirin
@@ -21,9 +23,9 @@ class DocxWriter implements ReportWriter {
     private final static Logger log = LoggerFactory.getLogger(DocxWriter.class);
 
     @Override
-    public void writeReport(List<User> users) {
+    public void writeReport(List<Agent> users) {
         FileOutputStream outputStream = null;
-        for (User user : users) {
+        for (Agent user : users) {
             try {
                 outputStream = new FileOutputStream("Generated/GeneratedDocx/" + user.getEmail() + ".docx");
                 XWPFDocument document = new XWPFDocument();
@@ -32,7 +34,7 @@ class DocxWriter implements ReportWriter {
                 addTitle(user, paragraph);
                 XWPFRun run2 = addText(user, paragraph);
                 document.write(outputStream);
-                log.info("Exported user with userId = " + user.getNif() + " correctly to DOCX format");
+                log.info("Exported user with userId = " + user.getId() + " correctly to DOCX format");
             } catch (IOException e) {
                 log.error(e.getMessage(), e);
             } finally {
@@ -53,11 +55,11 @@ class DocxWriter implements ReportWriter {
      * @param user      the user whose report we're creating.
      * @param paragraph the text of the head of the document.
      */
-    private void addTitle(User user, XWPFParagraph paragraph) {
+    private void addTitle(Agent user, XWPFParagraph paragraph) {
         XWPFRun run = paragraph.createRun();
         //    run.setBold(true);
         run.setFontSize(14);
-        addLine(run, "Greetings: " + user.getFirstName() + " " + user.getLastName() + ".");
+        addLine(run, "Greetings: " + user.getName() + ".");
     }
 
     /**
@@ -66,18 +68,18 @@ class DocxWriter implements ReportWriter {
      * @param user      the user whose report we're creating.
      * @param paragraph the text of the body of the document.
      */
-    private XWPFRun addText(User user, XWPFParagraph paragraph) {
+    private XWPFRun addText(Agent user, XWPFParagraph paragraph) {
         XWPFRun run = paragraph.createRun();
         run.setBold(false);
         run.setFontSize(12);
         addLine(run, "This is your personal information that we have received: ");
-        addLine(run, "Date of birth: " + user.getDateOfBirth() + ".");
-        addLine(run, "NIF: " + user.getNif() + ".");
-        addLine(run, "Nationality: " + user.getNationality() + ".");
-        addLine(run, "Address: " + user.getAddress() + ".");
+      //  addLine(run, "Date of birth: " + user.getDateOfBirth() + ".");
+        addLine(run, "NIF: " + user.getId() + ".");
+      //  addLine(run, "Nationality: " + user.getNationality() + ".");
+      //  addLine(run, "Address: " + user.getAddress() + ".");
         run.addBreak();
         addLine(run, "Your user name is your email: " + user.getEmail());
-        addLine(run, "Your password is: " + user.getUnencryptedPass());
+      //  addLine(run, "Your password is: " + user.getUnencryptedPass());
         return run;
     }
 

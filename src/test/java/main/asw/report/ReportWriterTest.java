@@ -2,6 +2,8 @@ package main.asw.report;
 
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.parser.PdfTextExtractor;
+
+import main.asw.agents.Agent;
 import main.asw.user.User;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
@@ -31,11 +33,11 @@ public class ReportWriterTest {
         File dir = new File("Generated/GeneratedTxt");
         dir.mkdirs();
 
-        List<User> users = new ArrayList<>();
-
-        users.add(new User("Pablo", "Pineirin", "pineirin@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-        users.add(new User("Pablo", "García Marcos", "PabloGarciaMarcos@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-        users.add(new User("Angel", "Borré Santiago", "AngelBorreSantiago@gmail.com", new Date(), "Navia", "Spain", "65489683N"));
+        List<Agent> users = new ArrayList<>();
+//this(agentKind,name, email, id);	
+        users.add(new Agent(1, "Pablo", "pablo@gmail.com", "53520961F"));
+       // users.add(new User("Pablo", "García Marcos", "PabloGarciaMarcos@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
+//        users.add(new User("Angel", "Borré Santiago", "AngelBorreSantiago@gmail.com", new Date(), "Navia", "Spain", "65489683N"));
 
         ReportWriter textWriter = ReportFactory.createTxtWriter();
         textWriter.writeReport(users);
@@ -80,11 +82,11 @@ public class ReportWriterTest {
         File dir = new File("Generated/GeneratedDocx");
         dir.mkdirs();
 
-        List<User> users = new ArrayList<>();
-
-        users.add(new User("Pablo", "Pineirin", "pineirin@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-        users.add(new User("Pablo", "García Marcos", "PabloGarciaMarcos@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-        users.add(new User("Angel", "Borré Santiago", "AngelBorreSantiago@gmail.com", new Date(), "Navia", "Spain", "65489683N"));
+        List<Agent> users = new ArrayList<>();
+        users.add(new Agent(1, "Pablo", "pablo@gmail.com", "53520961F"));
+       // users.add(new User("Pablo", "Pineirin", "pineirin@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
+        //users.add(new User("Pablo", "García Marcos", "PabloGarciaMarcos@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
+      //  users.add(new User("Angel", "Borré Santiago", "AngelBorreSantiago@gmail.com", new Date(), "Navia", "Spain", "65489683N"));
 
         ReportWriter docxWriter = ReportFactory.createDocxWriter();
         docxWriter.writeReport(users);
@@ -131,11 +133,11 @@ public class ReportWriterTest {
         File dir = new File("Generated/GeneratedPdf");
         dir.mkdirs();
 
-        List<User> users = new ArrayList<>();
-
-        users.add(new User("Pablo", "Pineirin", "pineirin@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-        users.add(new User("Pablo", "García Marcos", "PabloGarciaMarcos@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-        users.add(new User("Angel", "Borré Santiago", "AngelBorreSantiago@gmail.com", new Date(), "Navia", "Spain", "65489683N"));
+        List<Agent> users = new ArrayList<>();
+        users.add(new Agent(1, "Pablo", "pablo@gmail.com", "53520961F"));
+     //   users.add(new User("Pablo", "Pineirin", "pineirin@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
+       // users.add(new User("Pablo", "García Marcos", "PabloGarciaMarcos@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
+        //users.add(new User("Angel", "Borré Santiago", "AngelBorreSantiago@gmail.com", new Date(), "Navia", "Spain", "65489683N"));
 
         ReportWriter pdfWriter = ReportFactory.createPdfWriter();
         pdfWriter.writeReport(users);
@@ -188,10 +190,11 @@ public class ReportWriterTest {
         File dir3 = new File("Generated/GeneratedPdf");
         dir3.mkdirs();
 
-        List<User> users = new ArrayList<>();
+        List<Agent> users = new ArrayList<>();
 
-        users.add(new User("Pablo", "Pineirin", "pineirin@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-        users.add(new User("Pablo", "García Marcos", "PabloGarciaMarcos@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
+        users.add(new Agent(1, "Pablo", "pablo@gmail.com", "53520961F"));
+       // users.add(new User("Pablo", "Pineirin", "pineirin@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
+       // users.add(new User("Pablo", "García Marcos", "PabloGarciaMarcos@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
 
         ReportWriter textWriter = ReportFactory.createTxtWriter();
         ReportWriter docxWriter = ReportFactory.createDocxWriter();
