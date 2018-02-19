@@ -18,6 +18,7 @@ import main.asw.repository.PersistenceFactory;
 
 public class LoadAgents {
 	
+	@SuppressWarnings("unused")
 	private final static Logger log = LoggerFactory.getLogger(LoadAgents.class);
 	
 	public static void main(String... args) {

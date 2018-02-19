@@ -2,8 +2,6 @@ package main.asw.repository;
 
 import static junit.framework.TestCase.assertEquals;
 
-import java.util.Date;
-
 import org.bson.BsonDocument;
 import org.bson.Document;
 import org.junit.After;
@@ -14,8 +12,6 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
-import de.flapdoodle.embed.mongo.MongodExecutable;
-import de.flapdoodle.embed.mongo.MongodProcess;
 import main.asw.agents.Agent;
 
 /**
@@ -29,8 +25,8 @@ public class MongoDBTest {
     private static final int MONGO_PORT = 27017;
 //    private static final String IN_MEM_CONNECTION_URL = MONGO_HOST + ":" + MONGO_PORT;
 
-    private MongodExecutable mongodExe;
-    private MongodProcess mongod;
+//    private MongodExecutable mongodExe;
+//    private MongodProcess mongod;
     private MongoClient mongoClient;
 
     /**

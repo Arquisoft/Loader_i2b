@@ -117,6 +117,7 @@ class ParserImpl implements Parser {
 	 * @param kind
 	 * @return true if it exists
 	 */
+	@SuppressWarnings("unused")
 	private boolean isAgentTypeCorrect(int kind) {
 		try (BufferedReader br = new BufferedReader(new FileReader(csvdoc))) {
 			String line = "";
