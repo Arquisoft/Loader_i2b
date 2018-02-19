@@ -10,4 +10,8 @@ public class ParserFactory {
     public static ParserImpl getParser(String filename) throws IOException {
         return new ParserImpl(filename);
     }
+    
+    public static ParserImpl getParser(String filename, String csvdoc) throws IOException {
+    	return new ParserImpl(filename, csvdoc);
+    }
 }

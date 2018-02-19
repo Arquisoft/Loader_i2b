@@ -20,6 +20,8 @@ public class ParserTest {
     private final static String TEST_NO_FOUND_FILE = "noExiste";
     private static final String TEST_LESS_LINES = "lessLines.xls";
     private static final String TEST_MORE_LINES = "moreLines.xls";
+    
+    private static final String TEST_CSV_NAME = "pruebaTipos.csv";
 
 
     private ParserImpl parser;
@@ -90,5 +92,21 @@ public class ParserTest {
         parser = ParserFactory.getParser(BASE_PATH + TEST_LESS_LINES);
         parser.readList();
         assertEquals(0, parser.getAgents().size());
+    }
+    
+    @Test
+    public void testWithCsv() throws IOException, ParseException {
+         parser = ParserFactory.getParser(BASE_PATH + TEST_OK_FILE_NAME, TEST_CSV_NAME);
+
+         String baseName = "Agent";
+         String baseEmail = "prueba";
+         parser.readList();
+         assertEquals(18, parser.getAgents().size());
+         for (int i = 0; i < parser.getAgents().size(); i++) {
+             String index = (i + 1 < 10) ? "0" + (i + 1) : (i + 1) + "";
+             Agent user = parser.getAgents().get(i);
+             assertEquals(baseName + index, user.getName());
+             assertEquals(baseEmail + index + "@prueba.es", user.getEmail());
+         }
     }
 }

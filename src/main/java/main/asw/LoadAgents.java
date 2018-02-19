@@ -22,10 +22,25 @@ public class LoadAgents {
 	private final static Logger log = LoggerFactory.getLogger(LoadAgents.class);
 	
 	public static void main(String... args) {
+		//csv not provided
         if (args.length == 2) {
             try {
                 PersistenceFactory.getAgentDao().setMongoHost(args[1]);
                 Parser parser = ParserFactory.getParser(args[0]);
+                parser.readList();
+                parser.insert();
+            } catch (IOException e) {
+                printUsage();
+            }
+        } else {
+            printUsage();
+        }
+        //csv with kinds provided
+        if (args.length == 3) { 
+            try {
+            	String csv = args[2];
+                PersistenceFactory.getAgentDao().setMongoHost(args[1]);
+                Parser parser = ParserFactory.getParser(args[0], csv);
                 parser.readList();
                 parser.insert();
             } catch (IOException e) {

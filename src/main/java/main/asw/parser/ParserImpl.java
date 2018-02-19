@@ -33,6 +33,11 @@ class ParserImpl implements Parser {
 		this(filename);
 		this.csvdoc = csv;
 	}
+	
+	public void setCsv(String csvDoc){
+		String base = "src/test/resources/";
+		this.csvdoc = base + csvDoc;
+	}
 
 	@Override
 	public void readList() {
