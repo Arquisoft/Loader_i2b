@@ -16,9 +16,7 @@ public class ParserTest {
 
     private final static String BASE_PATH = "src/test/resources/";
 
-    private final static String TEST_OK_FILE_NAME = "pruebaUsuarios.xls";
-    private final static String TEST_BAD_DATE_AFTER_TODAY = "badDateAfterToday.xls";
-    private final static String TEST_BAD_DATE_FORMAT = "badDateFormat.xls";
+    private final static String TEST_OK_FILE_NAME = "pruebaAgentes.xls";
     private final static String TEST_NO_FOUND_FILE = "noExiste";
     private static final String TEST_LESS_LINES = "lessLines.xls";
     private static final String TEST_MORE_LINES = "moreLines.xls";
@@ -26,6 +24,7 @@ public class ParserTest {
 
     private ParserImpl parser;
 
+    //DONT KNOW WHY ITS COMMENTED SO I LEAVE IT
 //    private static final String MONGO_HOST = "localhost";
 //    private static final int MONGO_PORT = 27017;
 //
@@ -62,21 +61,15 @@ public class ParserTest {
             e.printStackTrace();
         }
 
-        String baseName = "Prueba";
-       // String baseSurname = "Apellido";
+        String baseName = "Agent";
         String baseEmail = "prueba";
-       // String baseStreet = "c/Prueba n0 1a";
-       // String baseCountry = "España";
         parser.readList();
-        assertEquals(20, parser.getAgents().size());
+        assertEquals(18, parser.getAgents().size());
         for (int i = 0; i < parser.getAgents().size(); i++) {
             String index = (i + 1 < 10) ? "0" + (i + 1) : (i + 1) + "";
             Agent user = parser.getAgents().get(i);
             assertEquals(baseName + index, user.getName());
-          //  assertEquals(baseSurname + index, user.getLastName());
             assertEquals(baseEmail + index + "@prueba.es", user.getEmail());
-          //  assertEquals(baseStreet, user.getAddress());
-          //  assertEquals(baseCountry, user.getNationality());
         }
     }
 
@@ -98,17 +91,4 @@ public class ParserTest {
         parser.readList();
         assertEquals(0, parser.getAgents().size());
     }
-
-/* Not needed. It's being tested on PersistenceTest class */
-//    @Test
-//    public void testArchieveInsertion() throws Exception {
-//        setupDb();
-//        parser = ParserFactory.getParser(BASE_PATH + TEST_OK_FILE_NAME);
-//        parser.readList();
-//        parser.insert();
-//        //We expect 1 because in that file all the rows have the same userId
-//        assertEquals(1, mongoClient.getDatabase("aswdb").getCollection("users").count());
-//        tearDownDb();
-//    }
-
 }

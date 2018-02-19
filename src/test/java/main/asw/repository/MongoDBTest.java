@@ -65,7 +65,7 @@ public class MongoDBTest {
     @Test
     public void testUserInsertion() {
         MongoDatabase db = mongoClient.getDatabase("test");
-        db.getCollection("users").deleteMany(new BsonDocument());
+        db.getCollection("agents").deleteMany(new BsonDocument());
         MongoCollection<Document> coll = db.getCollection("users");
         Agent agent = new Agent(0,"Person","person@gmail.com","05936542N");
         Document doc = new Document("name", agent.getName())

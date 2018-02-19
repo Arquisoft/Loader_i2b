@@ -37,10 +37,7 @@ public class ReportWriterTest {
         dir.mkdirs();
 
         List<Agent> users = new ArrayList<>();
-//this(agentKind,name, email, id);	
         users.add(new Agent(1, "Pablo", "pablo@gmail.com", "53520961F"));
-       // users.add(new User("Pablo", "García Marcos", "PabloGarciaMarcos@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-//        users.add(new User("Angel", "Borré Santiago", "AngelBorreSantiago@gmail.com", new Date(), "Navia", "Spain", "65489683N"));
 
         ReportWriter textWriter = ReportFactory.createTxtWriter();
         textWriter.writeReport(users);
@@ -140,9 +137,6 @@ public class ReportWriterTest {
 
         assertEquals(true, file.exists());
 
-        String contraseña1;
-        String contraseña3;
-
         String[] lines = readerTxt(file);
         assertTrue(lines[0].contains("Greetings: Pablo."));
         assertTrue(lines[1].contains("This is your personal information that we have received: "));
@@ -197,20 +191,22 @@ public class ReportWriterTest {
     private String[] readerDocx(File file) {
         String[] lines = new String[9];
         FileInputStream fileInputStream = null;
+        XWPFDocument document = null;
         try {
             fileInputStream = new FileInputStream(file);
-            XWPFDocument document = new XWPFDocument(fileInputStream);
+            document = new XWPFDocument(fileInputStream);
 
             List<XWPFParagraph> paragraphs = document.getParagraphs();
 
             for (XWPFParagraph paragraph : paragraphs) {
                lines = paragraph.getText().split("\n");
             }
-
+            
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }finally {
             try {
+            	document.close();
                 if (fileInputStream != null) {
                     fileInputStream.close();
                 }
