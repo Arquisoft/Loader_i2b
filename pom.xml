@@ -2,11 +2,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>es.uniovi.asw</groupId>
-	<artifactId>citizensLoader_i2b</artifactId>
-	<name>citizensLoader_i2b</name>
+	<artifactId>Loader_i2b</artifactId>
+	<name>Loader_i2b</name>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
-	<description>Citizens SubSystem</description>
+	<description>Agents SubSystem</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -194,7 +194,8 @@
 					<!-- MainClass in mainfest make a executable jar -->
 					<archive>
 						<manifest>
-							<mainClass>main.asw.LoadUsers</mainClass>
+							<addClasspath>true</addClasspath>
+							<mainClass>main.asw.LoadAgents</mainClass>
 						</manifest>
 					</archive>
 
@@ -332,7 +333,20 @@
 			<timezone>2</timezone>
 			<properties />
 		</developer>
+		<developer>
+			<id>UO251005</id>
+			<name>Sergio Faya Fernandez</name>
+			<email>UO251005@uniovi.es</email>
+			<organization>University of Oviedo</organization>
+			<organizationUrl>http://www.uniovi.es</organizationUrl>
+			<roles>
+				<role>Project Developer</role>
+			</roles>
+			<timezone>2</timezone>
+			<properties />
+		</developer>
 	</developers>
+
 
 
 	<organization>
