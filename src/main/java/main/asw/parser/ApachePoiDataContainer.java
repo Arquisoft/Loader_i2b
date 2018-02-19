@@ -1,6 +1,7 @@
 package main.asw.parser;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.DataFormatter;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -87,6 +88,19 @@ class ApachePoiDataContainer implements CellLikeDataContainer {
         }
     }
 
+    @Override
+	public int getCellIntegerValue(int index) {
+    	DataFormatter formatter = new DataFormatter();
+    	if (index < getNumberOfColumns()) {
+    		return Integer.parseInt(formatter.formatCellValue(wb.getSheetAt(currentSheet)
+                    .getRow(currentRow)
+                    .getCell(index)));
+                    
+        } else {
+            throw new IllegalArgumentException("The index is out of range");
+        }
+	}
+    
     @Override
     public int getCurrentRow() {
         return this.currentRow;

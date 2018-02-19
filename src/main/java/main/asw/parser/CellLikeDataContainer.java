@@ -40,6 +40,13 @@ public interface CellLikeDataContainer {
     String getCell(int index);
 
     /**
+     * Returns the cell in a String format
+     *
+     * @param index the index of the cell, less than the maximun index
+     * @return the cell in string format
+     */    
+    int getCellIntegerValue(int index);
+    /**
      * Returns the index of the current row
      *
      * @return the index of the current row
