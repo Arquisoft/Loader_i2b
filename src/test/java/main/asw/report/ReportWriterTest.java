@@ -45,35 +45,16 @@ public class ReportWriterTest {
         ReportWriter textWriter = ReportFactory.createTxtWriter();
         textWriter.writeReport(users);
 
-        File file = new File("Generated/GeneratedTxt/pineirin@gmail.com.txt");
-        File file2 = new File("Generated/GeneratedTxt/PabloGarciaMarcos@gmail.com.txt");
-        File file3 = new File("Generated/GeneratedTxt/AngelBorreSantiago@gmail.com.txt");
-        File file4 = new File("pablo@gmail.com.txt");
+        File file = new File("Generated/GeneratedTxt/53520961F.txt");
 
         assertEquals(true, file.exists());
-        assertEquals(true, file2.exists());
-        assertEquals(true, file3.exists());
-        assertEquals(false, file4.exists());
 
         String[] lines = readerTxt(file);
-        assertTrue(lines[0].contains("Greetings: Pablo Pineirin."));
+        assertTrue(lines[0].contains("Greetings: Pablo."));
         assertTrue(lines[1].contains("This is your personal information that we have received: "));
-        assertTrue(lines[8].contains("Your password is: "));
-
-        lines = readerTxt(file2);
-        assertTrue(lines[0].contains("Greetings: Pablo García Marcos."));
-        assertTrue(lines[3].contains("NIF: 53520961F"));
-        assertTrue(lines[8].contains("Your password is: "));
-
-        lines = readerTxt(file3);
-        assertTrue(lines[0].contains("Greetings: Angel Borré Santiago."));
-        assertTrue(lines[5].contains("Address: Navia"));
-        assertTrue(lines[8].contains("Your password is: "));
+        assertTrue(lines[3].contains("Your password is: "));
 
         assertEquals(true, file.delete());
-        assertEquals(true, file2.delete());
-        assertEquals(true, file3.delete());
-        assertEquals(false, file4.delete());
 
         dir.delete();
     }
@@ -87,44 +68,20 @@ public class ReportWriterTest {
 
         List<Agent> users = new ArrayList<>();
         users.add(new Agent(1, "Pablo", "pablo@gmail.com", "53520961F"));
-       // users.add(new User("Pablo", "Pineirin", "pineirin@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-        //users.add(new User("Pablo", "García Marcos", "PabloGarciaMarcos@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-      //  users.add(new User("Angel", "Borré Santiago", "AngelBorreSantiago@gmail.com", new Date(), "Navia", "Spain", "65489683N"));
 
         ReportWriter docxWriter = ReportFactory.createDocxWriter();
         docxWriter.writeReport(users);
 
-        File file = new File("Generated/GeneratedDocx/pineirin@gmail.com.docx");
-        File file2 = new File("Generated/GeneratedDocx/PabloGarciaMarcos@gmail.com.docx");
-        File file3 = new File("Generated/GeneratedDocx/AngelBorreSantiago@gmail.com.docx");
-        File file4 = new File("pablo@gmail.com.docx");
+        File file = new File("Generated/GeneratedDocx/53520961F.docx");
 
         assertEquals(true, file.exists());
-        assertEquals(true, file2.exists());
-        assertEquals(true, file3.exists());
-        assertEquals(false, file4.exists());
-
 
         String[] lines = readerDocx(file);
-        assertTrue(lines[0].contains("Greetings: Pablo Pineirin."));
-        assertTrue(lines[1].contains("This is your personal information that we have received: "));
+        assertTrue(lines[1].contains("Greetings: Pablo."));
+        assertTrue(lines[2].contains("This is your personal information that we have received: "));
         assertTrue(lines[8].contains("Your password is: "));
-
-        lines = readerDocx(file2);
-        assertTrue(lines[0].contains("Greetings: Pablo García Marcos."));
-        assertTrue(lines[3].contains("NIF: 53520961F"));
-        assertTrue(lines[8].contains("Your password is: "));
-
-        lines = readerDocx(file3);
-        assertTrue(lines[0].contains("Greetings: Angel Borré Santiago."));
-        assertTrue(lines[5].contains("Address: Navia"));
-        assertTrue(lines[8].contains("Your password is: "));
-
 
         assertEquals(true, file.delete());
-        assertEquals(true, file2.delete());
-        assertEquals(true, file3.delete());
-        assertEquals(false, file4.delete());
 
         dir.delete();
     }
@@ -138,47 +95,22 @@ public class ReportWriterTest {
 
         List<Agent> users = new ArrayList<>();
         users.add(new Agent(1, "Pablo", "pablo@gmail.com", "53520961F"));
-     //   users.add(new User("Pablo", "Pineirin", "pineirin@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-       // users.add(new User("Pablo", "García Marcos", "PabloGarciaMarcos@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-        //users.add(new User("Angel", "Borré Santiago", "AngelBorreSantiago@gmail.com", new Date(), "Navia", "Spain", "65489683N"));
 
         ReportWriter pdfWriter = ReportFactory.createPdfWriter();
         pdfWriter.writeReport(users);
 
-        File file = new File("Generated/GeneratedPdf/pineirin@gmail.com.pdf");
-        File file2 = new File("Generated/GeneratedPdf/PabloGarciaMarcos@gmail.com.pdf");
-        File file3 = new File("Generated/GeneratedPdf/AngelBorreSantiago@gmail.com.pdf");
-        File file4 = new File("pablo@gmail.com.pdf");
+        File file = new File("Generated/GeneratedPdf/53520961F.pdf");
 
         assertEquals(true, file.exists());
-        assertEquals(true, file2.exists());
-        assertEquals(true, file3.exists());
-        assertEquals(false, file4.exists());
 
-        String filename1 = "Generated/GeneratedPdf/pineirin@gmail.com.pdf";
-        String filename2 = "Generated/GeneratedPdf/PabloGarciaMarcos@gmail.com.pdf";
-        String filename3 = "Generated/GeneratedPdf/AngelBorreSantiago@gmail.com.pdf";
-
+        String filename1 = "Generated/GeneratedPdf/53520961F.pdf";
 
         String[] lines = readerPdf(filename1);
-        assertTrue(lines[0].contains("Greetings: Pablo Pineirin."));
+        assertTrue(lines[0].contains("Greetings: Pablo."));
         assertTrue(lines[1].contains("This is your personal information that we have received: "));
-        assertTrue(lines[8].contains("Your password is: "));
-
-        lines = readerPdf(filename2);
-        assertTrue(lines[0].contains("Greetings: Pablo García Marcos."));
-        assertTrue(lines[3].contains("NIF: 53520961F"));
-        assertTrue(lines[8].contains("Your password is: "));
-
-        lines = readerPdf(filename3);
-        assertTrue(lines[0].contains("Greetings: Angel Borré Santiago."));
-        assertTrue(lines[5].contains("Address: Navia"));
-        assertTrue(lines[8].contains("Your password is: "));
+        assertTrue(lines[6].contains("Your password is: "));
 
         assertEquals(true, file.delete());
-        assertEquals(true, file2.delete());
-        assertEquals(true, file3.delete());
-        assertEquals(false, file4.delete());
 
         dir.delete();
     }
@@ -196,8 +128,6 @@ public class ReportWriterTest {
         List<Agent> users = new ArrayList<>();
 
         users.add(new Agent(1, "Pablo", "pablo@gmail.com", "53520961F"));
-       // users.add(new User("Pablo", "Pineirin", "pineirin@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
-       // users.add(new User("Pablo", "García Marcos", "PabloGarciaMarcos@gmail.com", new Date(), "Gijón", "Spain", "53520961F"));
 
         ReportWriter textWriter = ReportFactory.createTxtWriter();
         ReportWriter docxWriter = ReportFactory.createDocxWriter();
@@ -206,72 +136,26 @@ public class ReportWriterTest {
         docxWriter.writeReport(users);
         pdfWriter.writeReport(users);
 
-        File file = new File("Generated/GeneratedTxt/pineirin@gmail.com.txt");
-        File file2 = new File("Generated/GeneratedTxt/PabloGarciaMarcos@gmail.com.txt");
-        File file3 = new File("Generated/GeneratedDocx/pineirin@gmail.com.docx");
-        File file4 = new File("Generated/GeneratedDocx/PabloGarciaMarcos@gmail.com.docx");
-        File file5 = new File("Generated/GeneratedPdf/pineirin@gmail.com.pdf");
-        File file6 = new File("Generated/GeneratedPdf/PabloGarciaMarcos@gmail.com.pdf");
-        File file7 = new File("pineirin@gmail.com.txt");
-        File file8 = new File("pablo@gmail.com.pdf");
+        File file = new File("Generated/GeneratedTxt/53520961F.txt");
 
         assertEquals(true, file.exists());
-        assertEquals(true, file2.exists());
-        assertEquals(true, file3.exists());
-        assertEquals(true, file4.exists());
-        assertEquals(true, file5.exists());
-        assertEquals(true, file6.exists());
-        assertEquals(false, file7.exists());
-        assertEquals(false, file8.exists());
 
         String contraseña1;
-        String contraseña2;
         String contraseña3;
 
         String[] lines = readerTxt(file);
-        assertTrue(lines[0].contains("Greetings: Pablo Pineirin."));
+        assertTrue(lines[0].contains("Greetings: Pablo."));
         assertTrue(lines[1].contains("This is your personal information that we have received: "));
-        assertTrue(lines[8].contains("Your password is: "));
-        contraseña1 = lines[8];
+        assertTrue(lines[3].contains("Your password is: "));
 
-        lines = readerTxt(file2);
-        assertTrue(lines[0].contains("Greetings: Pablo García Marcos."));
-        assertTrue(lines[3].contains("NIF: 53520961F"));
-        assertTrue(lines[8].contains("Your password is: "));
 
-        lines = readerDocx(file3);
-        assertTrue(lines[0].contains("Greetings: Pablo Pineirin."));
+        lines = readerPdf("Generated/GeneratedPdf/53520961F.pdf");
+        assertTrue(lines[0].contains("Greetings: Pablo."));
         assertTrue(lines[1].contains("This is your personal information that we have received: "));
-        assertTrue(lines[8].contains("Your password is: "));
-        contraseña2 = lines[8];
+        assertTrue(lines[6].contains("Your password is: "));
 
-        lines = readerDocx(file4);
-        assertTrue(lines[0].contains("Greetings: Pablo García Marcos."));
-        assertTrue(lines[3].contains("NIF: 53520961F"));
-        assertTrue(lines[8].contains("Your password is: "));
-
-        lines = readerPdf("Generated/GeneratedPdf/pineirin@gmail.com.pdf");
-        assertTrue(lines[0].contains("Greetings: Pablo Pineirin."));
-        assertTrue(lines[1].contains("This is your personal information that we have received: "));
-        assertTrue(lines[8].contains("Your password is: "));
-        contraseña3 = lines[8];
-
-        lines = readerPdf("Generated/GeneratedPdf/PabloGarciaMarcos@gmail.com.pdf");
-        assertTrue(lines[0].contains("Greetings: Pablo García Marcos."));
-        assertTrue(lines[3].contains("NIF: 53520961F"));
-        assertTrue(lines[8].contains("Your password is: "));
-
-        assertTrue(contraseña1.contains(contraseña2));
-        assertTrue(contraseña1.contains(contraseña3));
 
         assertEquals(true, file.delete());
-        assertEquals(true, file2.delete());
-        assertEquals(true, file3.delete());
-        assertEquals(true, file4.delete());
-        assertEquals(true, file5.delete());
-        assertEquals(true, file6.delete());
-        assertEquals(false, file7.delete());
-        assertEquals(false, file8.delete());
 
         new File("Generated/GeneratedTxt").delete();
         new File("Generated/GeneratedDocx").delete();

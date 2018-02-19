@@ -29,7 +29,7 @@ class MyPdfWriter implements ReportWriter {
         FileOutputStream fileOutputStream = null;
         for (Agent agent: agents) {
             try {
-                fileOutputStream = new FileOutputStream("Generated/GeneratedPdf/" + agent.getEmail() + ".pdf");
+                fileOutputStream = new FileOutputStream("Generated/GeneratedPdf/" + agent.getId() + ".pdf");
                 document = new Document();
                 PdfWriter.getInstance(document, fileOutputStream);
                 document.open();

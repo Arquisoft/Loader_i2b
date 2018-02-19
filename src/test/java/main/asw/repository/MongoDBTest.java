@@ -67,20 +67,23 @@ public class MongoDBTest {
         MongoDatabase db = mongoClient.getDatabase("test");
         db.getCollection("users").deleteMany(new BsonDocument());
         MongoCollection<Document> coll = db.getCollection("users");
-        Agent agent = new Agent(0,"Person","person@gmail.com","09820646B");
+        Agent agent = new Agent(0,"Person","person@gmail.com","05936542N");
         Document doc = new Document("name", agent.getName())
         		.append("agentKind", agent.getAgentKind())
-                .append("dni", agent.getId())
+                .append("agentId", agent.getId())
         		.append("email", agent.getEmail())
         		.append("location", agent.getLocation())
                 .append("password", agent.getPassword());
         coll.insertOne(doc);
 
         assertEquals(1, coll.count());
-        assertEquals("Miguel", coll.find().first().get("name"));
+        assertEquals("Person", coll.find().first().get("name"));
+        assertEquals("person@gmail.com", coll.find().first().get("email"));
+        assertEquals("05936542N", coll.find().first().get("agentId"));
+        assertEquals(null, coll.find().first().get("location"));
         assertEquals(doc.toJson(), coll.find().first().toJson());
 
-        db.getCollection("users").deleteMany(new BsonDocument());
+        db.getCollection("agents").deleteMany(new BsonDocument());
     }
 
 }

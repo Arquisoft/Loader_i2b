@@ -25,7 +25,7 @@ class TxtWriter implements ReportWriter {
         StringBuilder strb = null;
         for (Agent agent: agents)
             try {
-                fileWriter = new FileWriter("Generated/GeneratedTxt/" + agent.getEmail() + ".txt");
+                fileWriter = new FileWriter("Generated/GeneratedTxt/" + agent.getId() + ".txt");
                 strb = new StringBuilder();
                 bufferedWriter = new BufferedWriter(fileWriter);
                 strb.append("Greetings: " + agent.getName()+ ".\n");
