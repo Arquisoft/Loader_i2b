@@ -17,12 +17,12 @@ public class UtilTest {
 		Checker.isNull(null);
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testIsNotEmpty() {
 		Checker.isEmpty("notempty");
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testIsNotNull() {
 		Checker.isNull(new String());
 	}
