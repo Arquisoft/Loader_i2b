@@ -20,6 +20,8 @@ public class Agent {
 	private int agentKind;
 	private LatLng location;
 	private String password, unencryptedPass;
+	
+	public final static int TIPO_SENSOR = 3;
 
 	public Agent(int agentKind, String name, String email, String id) {
 		checkConstructor(name, email, id);
@@ -34,7 +36,18 @@ public class Agent {
 		this(agentKind, name, email, id);
 		this.location = location;
 	}
-
+	/**
+	 * La location no puede ser nula en el tipo sensor
+	 * @param kind
+	 */
+	@SuppressWarnings("unused")
+	private void checkKindSensor(int kind)
+	{
+		if(kind==TIPO_SENSOR){
+			Checker.isNull(location);
+		}
+	}
+	
 	private void checkConstructor(String name, String email, String id) {
 		Checker.isNull(name);
 		Checker.isEmpty(name);
