@@ -19,4 +19,10 @@ public class Checker {
 			throw new IllegalArgumentException("Value cannot be empty");
 		}
 	}
+	
+	public static void isLessThanZero(int i){
+		if(i < 0){
+			throw new IllegalArgumentException("Value cannot be lower than 0");
+		}
+	}
 }
