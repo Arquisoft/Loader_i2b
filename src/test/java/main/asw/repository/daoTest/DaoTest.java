@@ -1,18 +1,28 @@
 package main.asw.repository.daoTest;
 
+import org.bson.BsonDocument;
+import org.bson.Document;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
 import main.asw.agents.Agent;
+import main.asw.repository.PersistenceFactory;
 import main.asw.repository.dao.AgentDao;
-import main.asw.repository.dao.AgentDaoImpl;
 
 public class DaoTest {
-	
+
 	private Agent ag1;
 	private Agent ag2;
 	private AgentDao dao;
+	
+	private MongoClient mongoClient = new MongoClient("localhost", 27017);
+    private MongoDatabase db = mongoClient.getDatabase("aswdb");
+    private MongoCollection<Document> coll = db.getCollection("agents");
 
 	@Before
 	public void setUp() {
@@ -21,22 +31,26 @@ public class DaoTest {
 	}
 	
 	@Test
-	public void testConstructor(){
-		dao = new AgentDaoImpl();
+	public void testConstructor() {
+		dao = PersistenceFactory.getAgentDao();
 	}
-	
+
 	@Test
-	public void testSaveAgentOk(){
-		dao = new AgentDaoImpl();
+	public void testSaveAgentOk() {
+		dao = PersistenceFactory.getAgentDao();
 		boolean result = dao.saveAgent(ag1);
 		Assert.assertTrue(result);
+		
+		db.getCollection("agents").deleteMany(new BsonDocument());
 	}
-	
-	@Test 
-	public void testSaveAgentNotOk(){
-		dao = new AgentDaoImpl();
+
+	@Test
+	public void testSaveAgentNotOk() {
+		dao = PersistenceFactory.getAgentDao();
 		dao.saveAgent(ag1);
 		boolean result = dao.saveAgent(ag2);
-		Assert.assertTrue(result);
+		Assert.assertFalse(result);
+
+		db.getCollection("agents").deleteMany(new BsonDocument());
 	}
 }
