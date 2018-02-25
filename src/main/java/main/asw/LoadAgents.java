@@ -52,6 +52,7 @@ public class LoadAgents {
             }
         } else {
             printUsage();
+            throw new IllegalArgumentException();
         }
     }
 
