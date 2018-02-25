@@ -55,25 +55,7 @@ public class ParserTest {
 //    }
 
 
-    @Test
-    public void testAllOKFile() throws IOException, ParseException {
-        try {
-            parser = ParserFactory.getParser(BASE_PATH + TEST_OK_FILE_NAME);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        String baseName = "Agent";
-        String baseEmail = "prueba";
-        parser.readList();
-        assertEquals(18, parser.getAgents().size());
-        for (int i = 0; i < parser.getAgents().size(); i++) {
-            String index = (i + 1 < 10) ? "0" + (i + 1) : (i + 1) + "";
-            Agent user = parser.getAgents().get(i);
-            assertEquals(baseName + index, user.getName());
-            assertEquals(baseEmail + index + "@prueba.es", user.getEmail());
-        }
-    }
 
     @Test(expected = IOException.class)
     public void testNoFoundFile() throws IOException {
@@ -82,7 +64,7 @@ public class ParserTest {
 
     @Test
     public void testMoreLines() throws IOException, ParseException {
-        parser = ParserFactory.getParser(BASE_PATH + TEST_MORE_LINES);
+        parser = ParserFactory.getParser(BASE_PATH + TEST_MORE_LINES, TEST_CSV_NAME);
         parser.readList();
         assertEquals(0, parser.getAgents().size());
     }
@@ -95,7 +77,7 @@ public class ParserTest {
     }
     
     @Test
-    public void testWithCsv() throws IOException, ParseException {
+    public void testWithCsvAllOk() throws IOException, ParseException {
          parser = ParserFactory.getParser(BASE_PATH + TEST_OK_FILE_NAME, TEST_CSV_NAME);
 
          String baseName = "Agent";

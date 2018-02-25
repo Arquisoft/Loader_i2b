@@ -92,14 +92,17 @@ class ParserImpl implements Parser {
 	}
 
 	/**
-	 * public Agent(int agentKind, String name,String email, String id,LatLng
-	 * location) {
+	 * Convierte la fila del documento a un objeto Agent
 	 * 
-	 * @return
+	 * 
+	 * @return objeto agent
 	 * @throws ParseException
 	 */
 	private Agent rowToAgent() throws ParseException {
 		int kind = dataSource.getCellIntegerValue(0);
+		if(!isAgentTypeCorrect(kind)){
+			throw new ParseException("Kind of agent is not in the csvDoc", kind);
+		}
 		String name = dataSource.getCell(1);
 		String email = dataSource.getCell(2);
 		String id = dataSource.getCell(3);
