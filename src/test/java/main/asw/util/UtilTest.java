@@ -1,4 +1,4 @@
-package main.asw;
+package main.asw.util;
 
 import org.junit.Test;
 

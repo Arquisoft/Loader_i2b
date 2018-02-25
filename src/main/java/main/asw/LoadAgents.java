@@ -27,8 +27,10 @@ public class LoadAgents {
             try {
                 PersistenceFactory.getAgentDao().setMongoHost(args[1]);
                 Parser parser = ParserFactory.getParser(args[0]);
+                System.out.println("Archivos aceptados (xls), leyendo...");
                 parser.readList();
                 parser.insert();
+                System.out.println("Operaciones finalizadas");
             } catch (IOException e) {
                 printUsage();
             }
@@ -41,13 +43,16 @@ public class LoadAgents {
             	String csv = args[2];
                 PersistenceFactory.getAgentDao().setMongoHost(args[1]);
                 Parser parser = ParserFactory.getParser(args[0], csv);
+                System.out.println("Archivos aceptados (xls y csv), leyendo...");
                 parser.readList();
                 parser.insert();
+                System.out.println("Operaciones finalizadas");
             } catch (IOException e) {
                 printUsage();
             }
         } else {
             printUsage();
+            throw new IllegalArgumentException();
         }
     }
 

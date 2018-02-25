@@ -1,4 +1,4 @@
-package main.asw;
+package main.asw.agents;
 
 import static org.junit.Assert.assertNotNull;
 

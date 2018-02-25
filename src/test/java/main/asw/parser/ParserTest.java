@@ -16,13 +16,15 @@ public class ParserTest {
 
     private final static String BASE_PATH = "src/test/resources/";
 
+    //pruebas xls
     private final static String TEST_OK_FILE_NAME = "pruebaAgentes.xls";
     private final static String TEST_NO_FOUND_FILE = "noExiste";
     private static final String TEST_LESS_LINES = "lessLines.xls";
     private static final String TEST_MORE_LINES = "moreLines.xls";
     
+    //pruebas csv
     private static final String TEST_CSV_NAME = "pruebaTipos.csv";
-
+	private static final String TEST_CSV_WRONGKINDS = "pruebaTiposMal.csv";
 
     private ParserImpl parser;
 
@@ -54,7 +56,19 @@ public class ParserTest {
 //        }
 //    }
 
-
+    @Test
+    public void testAgentTypeInCorrect() throws IOException{
+    	parser = new ParserImpl(BASE_PATH + TEST_OK_FILE_NAME, TEST_CSV_WRONGKINDS);
+    	parser.readList();
+    	assertEquals(6, parser.getAgents().size());
+    }
+    
+    @Test
+    public void testAgentTypeInCorrectAll() throws IOException{
+    	parser = new ParserImpl(BASE_PATH + TEST_MORE_LINES, TEST_CSV_WRONGKINDS);
+    	parser.readList();
+    	assertEquals(0, parser.getAgents().size());
+    }
 
 
     @Test(expected = IOException.class)
