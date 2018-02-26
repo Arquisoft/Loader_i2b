@@ -7,7 +7,7 @@
 Loader module
 
 #Running the application
-This application uses MongoDB. For instructions on how to set it up, you can have a look at the bottom of [this](https://github.com/Arquisoft/citizensLoader_i2b/wiki/MongoDB-quick-start-guide) wiki page
+This application uses MongoDB. For instructions on how to set it up, you can have a look at the bottom of [this](https://github.com/Arquisoft/Loader_i2b/wiki) wiki page
 
 # 2018 Team Members
 * Pablo González Balbuena (@pbalbuena)
