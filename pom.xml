@@ -129,6 +129,13 @@
 			<artifactId>itextpdf</artifactId>
 			<version>5.0.6</version>
 		</dependency>
+		
+		<!--  JCommander dependency for parsing command line -->
+		<dependency>
+			<groupId>com.beust</groupId>
+			<artifactId>jcommander</artifactId>
+			<version>1.58</version>
+		</dependency>
 	</dependencies>
 	<!--Build plugins -->
 	<build>
