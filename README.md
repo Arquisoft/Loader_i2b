@@ -7,7 +7,7 @@
 Loader module
 
 #Running the application
-This application uses MongoDB. For instructions on how to set it up, you can have a look at the bottom of [this](https://github.com/Arquisoft/Loader_i2b/wiki) wiki page
+This application uses MongoDB. For instructions on how to set it up, you can have a look at the bottom of [this](https://github.com/Arquisoft/Loader_i2b/wiki) wiki page.
 
 # 2018 Team Members
 * Pablo González Balbuena (@pbalbuena)
@@ -20,4 +20,11 @@ This application uses MongoDB. For instructions on how to set it up, you can hav
 * Miguel García García (@miguelgrc)
 * Pablo García Marcos (@pineirin)
 
+#How to run it
+To see how we can execute the jar with 
+```
+java -jar <Loader_i2b-0.0.1-jar-with-dependencies> -h.
 
+```
+Please notice that the file containing the tipe of agents and the data provided is required.
+After the process has been completed the Pdf, docx and txt files containing the data will be generated into the Generated folder.
