@@ -1,11 +1,7 @@
 package main.asw;
 
-import java.net.URL;
-import java.nio.file.Path;
-
 import com.beust.jcommander.Parameter;
-import com.beust.jcommander.converters.PathConverter;
-import com.beust.jcommander.converters.URLConverter;
+import com.mongodb.MongoClientURI;
 
 public class LoaderParameters {
 
@@ -14,45 +10,45 @@ public class LoaderParameters {
 	description = "Display helps information")
 	private boolean help;
 
-	@Parameter(names = { "-p","--xlsPath" }, 
+	@Parameter(names = { "-a","--agentsFile" }, 
 	required = true, 
-	converter = PathConverter.class, 
 	validateWith  = PathValidator.class,
-	description = "Absolute path to file containing the data of agents")
-	private Path agentsPath;
+	description = "Name of the file containing the data of agents")
+	private String agentsPath;
 
-	@Parameter(names = { "-u","--mongoUrl" }, 
-	converter = URLConverter.class, 
-	description = "Absolute path to file containing the data of agents")
-	private URL mongoURL;
-
-	@Parameter(names = { "-p","--localPort" }, 
-	description = "Absolute path to file containing the data of agents")
-	private String mongoLocal;
+	@Parameter(names = { "-t","--agentsType" }, 
+	required = true, 
+	validateWith  = PathValidator.class,
+	description = "Name of the file containing the types of agents")
+	private String typePath;
+	
+	@Parameter(names = { "-u","--mongoUri" }, 
+	converter = MyMongoUriConverter.class, 
+	description = "URI of the mongo database uri")
+	private MongoClientURI mongoURI;
+	
+	@Parameter(names = { "-p","--port" }, 
+	description = "Port of an localhost connection")
+	private int dbPort = -1;
 	
 	public boolean isHelp() {
 		return help;
 	}
 
-	public Path getAgentsPath() {
+	public String getAgentsPath() {
 		return agentsPath;
 	}
-
-	public URL getMongoURL() {
-		return mongoURL;
-	}
-
-	public String getMongoLocal() {
-		return mongoLocal;
-	}
-
-	@Override
-	public String toString() {
-		return "\nHelp=" +help+
-				"\nXls Path=" + agentsPath +
-				"\nLocal mongo conection=" + mongoLocal +
-				"\nURL Mongo Connection=" + mongoURL;
-	}
-
 	
+	public String getTypePath() {
+		return typePath;
+	}
+
+	public MongoClientURI getMongoURI() {
+		return mongoURI;
+	}
+
+	public int getDbPort() {
+		return dbPort;
+	}
+
 }

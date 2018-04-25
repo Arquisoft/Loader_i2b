@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -58,10 +59,19 @@ public class AgentDaoImpl implements AgentDao {
     }
 
     @Override
-    public void setMongoHost(String host) {
-        mongoClient = new MongoClient(host, 27017);
+    public void setMongoHost(int port) {
+        mongoClient = new MongoClient("localhost", port);
         db = mongoClient.getDatabase("aswdb");
         coll = db.getCollection("agents");
     }
+
+	@Override
+	public void setRemoteMongoConnection(MongoClientURI mongoUri) {
+		mongoClient = new MongoClient(mongoUri);
+        db = mongoClient.getDatabase("aswdb");
+        coll = db.getCollection("agents");
+	}
+
+	
 
 }

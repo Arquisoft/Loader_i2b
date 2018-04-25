@@ -1,5 +1,7 @@
 package main.asw.repository.dao;
 
+import com.mongodb.MongoClientURI;
+
 import main.asw.agents.Agent;
 
 /**
@@ -18,5 +20,15 @@ public interface AgentDao {
 	 */
 	boolean saveAgent(Agent agent);
 
-	void setMongoHost(String arg);
+	/**
+	 * Specifies the port in a localhost connection
+	 * @param port
+	 */
+	void setMongoHost(int port);
+	
+	/**
+	 * Specifies the uri of the database
+	 * @param mongoUri
+	 */
+	void setRemoteMongoConnection(MongoClientURI mongoUri);
 }

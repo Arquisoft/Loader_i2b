@@ -16,13 +16,12 @@ import main.asw.util.UtilTest;
 @RunWith(Suite.class)
 @SuiteClasses({ 
 	DaoTest.class,
-	MainTest.class,
 	AgentsTest.class,
 	EncryptionTest.class,
 	ParserTest.class,
 	ReportWriterTest.class,
 	MongoDBTest.class,
-	//PersistenceTest.class,
+	PersistenceTest.class,
 	UtilTest.class
 	})
 public class AllTests {
