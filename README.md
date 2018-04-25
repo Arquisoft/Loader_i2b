@@ -27,5 +27,5 @@ java -jar <Loader_i2b-0.0.1-jar-with-dependencies> -h.
 
 ```
 ![Image](https://github.com/Arquisoft/Loader_i2b/blob/master/img/help.png)
-Please notice that the file containing the tipe of agents and the data provided is required.
-After the process has been completed the Pdf, docx and txt files containing the data will be generated into the Generated folder.
+Please notice that the file containing the type of agents and the data provided is required (Marked with an \*). Also the default port for the mongo local connection is 27017. 
+After the process has been completed the pdf, docx and txt files containing the data will be generated into the Generated folder.
