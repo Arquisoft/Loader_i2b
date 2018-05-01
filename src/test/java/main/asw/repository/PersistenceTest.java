@@ -67,32 +67,32 @@ public class PersistenceTest {
     private void insertUsers(){
         oldCount = coll.count();
 
-        agents.add(new Agent(1,
+        agents.add(new Agent("1",
         		"Miguel",
                 "mg@email.com",
                 "66863955B")
         );
 
-        agents.add(new Agent(1,
+        agents.add(new Agent("1",
         		"Jorge",
                 "jl@email.com",
                 "37165071S")
         );
 
-        agents.add(new Agent(1,
+        agents.add(new Agent("1",
         		"Nicolás",
                 "np@email.com",
                 "94875755L")
         );
 
-        agents.add(new Agent(1,
+        agents.add(new Agent("1",
         		"Pablo",
                 "pg@email.com",
                 "46402573G")
         );
 
         //Same userId
-        agents.add(new Agent(1,
+        agents.add(new Agent("1",
         		"Pablo",
                 "pg@email.com",
                 "46402573G")

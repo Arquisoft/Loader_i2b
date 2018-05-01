@@ -23,7 +23,7 @@ public class LoaderParameters {
 	private String typePath;
 	
 	@Parameter(names = { "-u","--mongoUri" }, 
-	converter = MyMongoUriConverter.class, 
+	converter = MongoUriConverter.class, 
 	description = "URI of the mongo database uri")
 	private MongoClientURI mongoURI;
 	

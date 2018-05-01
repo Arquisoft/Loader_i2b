@@ -1,7 +1,6 @@
 package main.asw.parser;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import main.asw.agents.Agent;
 import main.asw.location.LatLng;
+import main.asw.parser.masterfile.CSVFileParser;
 import main.asw.repository.DBUpdate;
 import main.asw.repository.RepositoryFactory;
 
@@ -23,7 +23,7 @@ class ParserImpl implements Parser {
 
 	private CellLikeDataContainer dataSource;
 	private List<Agent> agents;
-	private String csvdoc;
+	private CSVFileParser csvParser = new CSVFileParser();
 
 	ParserImpl(String filename) throws IOException {
 		this.dataSource = new ApachePoiDataContainer(filename);
@@ -31,13 +31,9 @@ class ParserImpl implements Parser {
 
 	ParserImpl(String filename, String csv) throws IOException {
 		this(filename);
-		this.csvdoc = csv;
+		csvParser = new CSVFileParser(csv);
 	}
-	
-	public void setCsv(String csvDoc){
-		String base = "src/test/resources/";
-		this.csvdoc = base + csvDoc;
-	}
+
 
 	@Override
 	public void readList() {
@@ -57,12 +53,11 @@ class ParserImpl implements Parser {
 
 	private void loadData() throws IOException {
 		List<Agent> agentsAux = new ArrayList<>();
-
 		while (dataSource.nextRow()) {
 			if (dataSource.getCellIntegerValue(0) == 1 || dataSource.getCellIntegerValue(0) == 2) {
 				if (dataSource.getNumberOfColumns() == 5 || dataSource.getNumberOfColumns() == 4) {
 					try {
-						agentsAux.add(rowToAgent());
+						agentsAux.add(rowToAgent(dataSource.getCurrentRow()));
 					} catch (ParseException | IllegalArgumentException e) {
 						// Thrown by the Date Parser
 						log.error("ParseError: Error reading line " + dataSource.toString() + " " + e.getMessage(),
@@ -75,7 +70,7 @@ class ParserImpl implements Parser {
 			} else if (dataSource.getCellIntegerValue(0) == 3) {
 				if (dataSource.getNumberOfColumns() == 4) {
 					try {
-						agentsAux.add(rowToAgent());
+						agentsAux.add(rowToAgent(dataSource.getCurrentRow()));
 					} catch (ParseException | IllegalArgumentException e) {
 						// Thrown by the Date Parser
 						log.error("ParseError: Error reading line " + dataSource.toString() + " " + e.getMessage(),
@@ -98,10 +93,11 @@ class ParserImpl implements Parser {
 	 * @return objeto agent
 	 * @throws ParseException
 	 */
-	private Agent rowToAgent() throws ParseException {
+	private Agent rowToAgent(int row) throws ParseException {
 		int kind = dataSource.getCellIntegerValue(0);
-		if(!isAgentTypeCorrect(kind)){
-			throw new ParseException("Kind of agent is not in the csvDoc", kind);
+		String agentKind = agentKind(kind);
+		if (agentKind == null) {
+			throw new ParseException("Kind of agent is not in the csvDoc",row );
 		}
 		String name = dataSource.getCell(1);
 		String email = dataSource.getCell(2);
@@ -109,13 +105,9 @@ class ParserImpl implements Parser {
 		if (dataSource.getNumberOfColumns() == 5) {
 			String[] locationstr = dataSource.getCell(4).split(",");// convert to LatLng
 			LatLng location = parseLocation(locationstr);
-			// if (isAgentTypeCorrect(kind)) { // is optional
-			return new Agent(kind, name, email, id, location);
-			// }
-		} //else if (isAgentTypeCorrect(kind)) { // is optional
-			return new Agent(kind, name, email, id);
-		//}
-		
+			return new Agent(agentKind, name, email, id, location);
+		}
+		return new Agent(agentKind, name, email, id);
 	}
 
 	/**
@@ -124,24 +116,17 @@ class ParserImpl implements Parser {
 	 * 
 	 * @param kind
 	 * @return true if it exists
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 */
-	private boolean isAgentTypeCorrect(int kind) {
-		try (BufferedReader br = new BufferedReader(new FileReader(csvdoc))) {
-			String line = "";
-			while ((line = br.readLine()) != null) {
-				// use comma as separator
-				String[] agentType = line.split(",");
-				if (kind == Integer.valueOf(agentType[0])) {
-					return true;
-				} else
-					continue;
-			}
-			br.close();
-			return false;
+	private String agentKind(int kind) {
+		try {
+			return csvParser.getKindNameOf(kind);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 
 	/**

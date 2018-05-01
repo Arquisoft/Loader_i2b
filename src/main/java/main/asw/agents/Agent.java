@@ -17,13 +17,13 @@ public class Agent {
 	private String name;
 	private String email;
 	private String id;
-	private int agentKind;
+	private String agentKind;
 	private LatLng location;
 	private String password, unencryptedPass;
 	
 	public final static int TIPO_SENSOR = 3;
 
-	public Agent(int agentKind, String name, String email, String id) {
+	public Agent(String agentKind, String name, String email, String id) {
 		checkConstructor(name, email, id);
 		generatePassword();
 		this.name = name;
@@ -32,7 +32,7 @@ public class Agent {
 		setId(id);
 	}
 
-	public Agent(int agentKind, String name, String email, String id, LatLng location) {
+	public Agent(String agentKind, String name, String email, String id, LatLng location) {
 		this(agentKind, name, email, id);
 		this.location = location;
 	}
@@ -74,7 +74,7 @@ public class Agent {
 		return id;
 	}
 
-	public int getAgentKind() {
+	public String getAgentKind() {
 		return agentKind;
 	}
 

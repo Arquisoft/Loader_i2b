@@ -26,8 +26,8 @@ public class DaoTest {
 
 	@Before
 	public void setUp() {
-		ag1 = new Agent(1, "Agent", "agent@gmail.com", "05936542N");
-		ag2 = new Agent(1, "Agent2", "agent2@gmail.com", "05936542N");
+		ag1 = new Agent("1", "Agent", "agent@gmail.com", "05936542N");
+		ag2 = new Agent("1", "Agent2", "agent2@gmail.com", "05936542N");
 	}
 	
 	@Test

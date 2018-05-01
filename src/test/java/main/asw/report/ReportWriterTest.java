@@ -37,7 +37,7 @@ public class ReportWriterTest {
         dir.mkdirs();
 
         List<Agent> users = new ArrayList<>();
-        users.add(new Agent(1, "Pablo", "pablo@gmail.com", "53520961F"));
+        users.add(new Agent("1", "Pablo", "pablo@gmail.com", "53520961F"));
 
         ReportWriter textWriter = ReportFactory.createTxtWriter();
         textWriter.writeReport(users);
@@ -64,7 +64,7 @@ public class ReportWriterTest {
         dir.mkdirs();
 
         List<Agent> users = new ArrayList<>();
-        users.add(new Agent(1, "Pablo", "pablo@gmail.com", "53520961F"));
+        users.add(new Agent("1", "Pablo", "pablo@gmail.com", "53520961F"));
 
         ReportWriter docxWriter = ReportFactory.createDocxWriter();
         docxWriter.writeReport(users);
@@ -91,7 +91,7 @@ public class ReportWriterTest {
         dir.mkdirs();
 
         List<Agent> users = new ArrayList<>();
-        users.add(new Agent(1, "Pablo", "pablo@gmail.com", "53520961F"));
+        users.add(new Agent("1", "Pablo", "pablo@gmail.com", "53520961F"));
 
         ReportWriter pdfWriter = ReportFactory.createPdfWriter();
         pdfWriter.writeReport(users);
@@ -124,7 +124,7 @@ public class ReportWriterTest {
 
         List<Agent> users = new ArrayList<>();
 
-        users.add(new Agent(1, "Pablo", "pablo@gmail.com", "53520961F"));
+        users.add(new Agent("1", "Pablo", "pablo@gmail.com", "53520961F"));
 
         ReportWriter textWriter = ReportFactory.createTxtWriter();
         ReportWriter docxWriter = ReportFactory.createDocxWriter();

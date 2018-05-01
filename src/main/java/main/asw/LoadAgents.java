@@ -77,6 +77,7 @@ public class LoadAgents {
 			System.err.println("There is an error in the parsing process");
 		} catch (Exception e) {
 			System.err.println("An error occurred while running the application, use -h or --help to get help");
+			e.printStackTrace(System.out);
 		} finally {
 			System.exit(0);
 		}

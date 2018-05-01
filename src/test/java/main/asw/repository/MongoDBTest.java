@@ -63,7 +63,7 @@ public class MongoDBTest {
         MongoDatabase db = mongoClient.getDatabase("testMongo");
         db.getCollection("agents").deleteMany(new BsonDocument());
         MongoCollection<Document> coll = db.getCollection("agents");
-        Agent agent = new Agent(0,"Person","person@gmail.com","05936542N");
+        Agent agent = new Agent("0","Person","person@gmail.com","05936542N");
         Document doc = new Document("name", agent.getName())
         		.append("agentKind", agent.getAgentKind())
                 .append("agentId", agent.getId())

@@ -21,16 +21,9 @@ public class AgentDaoImpl implements AgentDao {
 
     private final static Logger log = LoggerFactory.getLogger(AgentDao.class);
 
-    private MongoClient mongoClient = new MongoClient("localhost", 27017);
-    private MongoDatabase db = mongoClient.getDatabase("aswdb");
-    private MongoCollection<Document> coll = db.getCollection("agents");
-
-
-    public AgentDaoImpl(){
-        mongoClient = new MongoClient("localhost", 27017);
-        db = mongoClient.getDatabase("aswdb");
-        coll = db.getCollection("agents");
-    }
+    private MongoClient mongoClient;
+    private MongoDatabase db;
+    private MongoCollection<Document> coll;
 
     /**
      * Saves a given agent in the database if there ins't already one with the same id
@@ -44,9 +37,10 @@ public class AgentDaoImpl implements AgentDao {
             Document doc = new Document()
             		.append("name", agent.getName())
             		.append("email", agent.getEmail())
-            		.append("agentId", agent.getId())
-            		.append("agentKind", agent.getAgentKind())
-            		.append("location", agent.getLocation());
+            		.append("username", agent.getId())
+            		.append("kind", agent.getAgentKind())
+            		.append("location", agent.getLocation())
+            		.append("password", agent.getPassword());
             
             coll.insertOne(doc);
             log.info("Agent with id = " + agent.getId() + " added to the database");
@@ -68,8 +62,8 @@ public class AgentDaoImpl implements AgentDao {
 	@Override
 	public void setRemoteMongoConnection(MongoClientURI mongoUri) {
 		mongoClient = new MongoClient(mongoUri);
-        db = mongoClient.getDatabase("aswdb");
-        coll = db.getCollection("agents");
+        db = mongoClient.getDatabase("test");
+        coll = db.getCollection("users");
 	}
 
 	
