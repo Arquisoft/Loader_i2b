@@ -123,7 +123,6 @@ class ParserImpl implements Parser {
 		try {
 			return csvParser.getKindNameOf(kind);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

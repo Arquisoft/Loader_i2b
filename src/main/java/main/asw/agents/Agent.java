@@ -36,6 +36,7 @@ public class Agent {
 		this(agentKind, name, email, id);
 		this.location = location;
 	}
+	
 	/**
 	 * La location no puede ser nula en el tipo sensor
 	 * @param kind

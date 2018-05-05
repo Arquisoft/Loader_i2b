@@ -42,7 +42,7 @@ public class PersistenceTest {
     @After
     public void tearDown(){
         for (int i = 0; i < agents.size(); i++){
-            Document query = new Document("agentId", agents.get(i).getId());
+            Document query = new Document("id", agents.get(i).getId());
             coll.deleteMany(query);
         }
     }
@@ -53,11 +53,12 @@ public class PersistenceTest {
      */
     @Test
     public void testInsert(){
+    	PersistenceFactory.getAgentDao().setMongoHost(27017);
         insertUsers();
         //Only the non-repeated users should be in the database. We tried to insert one duplicated
         assertTrue(newCount == oldCount+agents.size()-1);
 
-        Document query = new Document("agentId", agents.get(3).getId());
+        Document query = new Document("id", agents.get(3).getId());
         assertEquals((coll.count(query)), 1);
     }
 
@@ -65,8 +66,9 @@ public class PersistenceTest {
      * Adds users to the database by means of our persistence layer
      */
     private void insertUsers(){
+    	coll.find();
         oldCount = coll.count();
-
+        
         agents.add(new Agent("1",
         		"Miguel",
                 "mg@email.com",
