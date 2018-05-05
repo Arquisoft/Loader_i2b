@@ -26,8 +26,8 @@ public class DaoTest {
 
 	@Before
 	public void setUp() {
-		ag1 = new Agent("1", "Agent", "agent@gmail.com", "05936542N");
-		ag2 = new Agent("1", "Agent2", "agent2@gmail.com", "05936542N");
+		ag1 = new Agent("1", "Agent", "agent@gmail.com",  "05936542N");
+		ag2 = new Agent("1", "Agent2", "agent2@gmail.com","05936542N");
 	}
 	
 	@Test
@@ -38,6 +38,7 @@ public class DaoTest {
 	@Test
 	public void testSaveAgentOk() {
 		dao = PersistenceFactory.getAgentDao();
+		dao.setMongoHost(27017);
 		boolean result = dao.saveAgent(ag1);
 		Assert.assertTrue(result);
 		
@@ -47,6 +48,7 @@ public class DaoTest {
 	@Test
 	public void testSaveAgentNotOk() {
 		dao = PersistenceFactory.getAgentDao();
+		dao.setMongoHost(27017);
 		dao.saveAgent(ag1);
 		boolean result = dao.saveAgent(ag2);
 		Assert.assertFalse(result);

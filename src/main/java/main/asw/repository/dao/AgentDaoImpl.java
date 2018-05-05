@@ -33,8 +33,9 @@ public class AgentDaoImpl implements AgentDao {
      */
     @Override
     public boolean saveAgent(Agent agent) {
-        if (coll.find(eq("agentId", agent.getId())).first() == null) {
+        if (coll.find(eq("id", agent.getId())).first() == null) {
             Document doc = new Document()
+            		.append("id", agent.getId())
             		.append("name", agent.getName())
             		.append("email", agent.getEmail())
             		.append("username", agent.getId())
@@ -52,6 +53,9 @@ public class AgentDaoImpl implements AgentDao {
         }
     }
 
+    /**
+     * Configure the mongo host as a local connection
+     */
     @Override
     public void setMongoHost(int port) {
         mongoClient = new MongoClient("localhost", port);
@@ -59,6 +63,9 @@ public class AgentDaoImpl implements AgentDao {
         coll = db.getCollection("agents");
     }
 
+    /**
+     * Configure the Mongo host to establish a connection with a remote URI.
+     */
 	@Override
 	public void setRemoteMongoConnection(MongoClientURI mongoUri) {
 		mongoClient = new MongoClient(mongoUri);

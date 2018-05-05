@@ -1,4 +1,4 @@
-package main.asw;
+package main;
 
 import java.io.IOException;
 
@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
 
+import main.asw.LoaderParameters;
 import main.asw.parser.Parser;
 import main.asw.parser.ParserFactory;
 import main.asw.repository.PersistenceFactory;
