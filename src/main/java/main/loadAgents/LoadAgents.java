@@ -1,4 +1,4 @@
-package main;
+package main.loadAgents;
 
 import java.io.IOException;
 
@@ -8,10 +8,10 @@ import org.slf4j.LoggerFactory;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
 
-import main.asw.LoaderParameters;
+import main.asw.dbupdate.PersistenceFactory;
+import main.asw.initParameter.ParameterParser;
 import main.asw.parser.Parser;
 import main.asw.parser.ParserFactory;
-import main.asw.repository.PersistenceFactory;
 import main.asw.util.Checker;
 
 /**
@@ -26,7 +26,7 @@ public class LoadAgents {
 	@SuppressWarnings("unused")
 	private final static Logger log = LoggerFactory.getLogger(LoadAgents.class);
 
-	final LoaderParameters params = new LoaderParameters();
+	final ParameterParser params = new ParameterParser();
 
 	private static void printWelcomeMessage() {
 		System.out.println("\r\n" + "   __                    _                       _  ____   _      \r\n"

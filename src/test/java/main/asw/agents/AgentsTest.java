@@ -5,8 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.asw.agents.Agent;
-import main.asw.location.LatLng;
+import main.asw.util.location.LatLng;
 
 public class AgentsTest {
 

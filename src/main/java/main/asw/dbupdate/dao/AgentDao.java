@@ -1,4 +1,4 @@
-package main.asw.repository.dao;
+package main.asw.dbupdate.dao;
 
 import com.mongodb.MongoClientURI;
 

@@ -1,4 +1,4 @@
-package main.asw.repository.dao;
+package main.asw.dbupdate.dao;
 
 import static com.mongodb.client.model.Filters.eq;
 
@@ -12,6 +12,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import main.asw.agents.Agent;
+import main.asw.dbupdate.dao.AgentDao;
 /**
  * 
  * @author Sergio Faya Fernandez

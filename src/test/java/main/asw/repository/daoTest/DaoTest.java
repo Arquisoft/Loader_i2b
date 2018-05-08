@@ -11,8 +11,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import main.asw.agents.Agent;
-import main.asw.repository.PersistenceFactory;
-import main.asw.repository.dao.AgentDao;
+import main.asw.dbupdate.PersistenceFactory;
+import main.asw.dbupdate.dao.AgentDao;
 
 public class DaoTest {
 

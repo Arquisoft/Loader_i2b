@@ -1,4 +1,4 @@
-package main.asw.repository;
+package main.asw.dbupdate;
 
 
 import java.io.File;
@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.asw.agents.Agent;
+import main.asw.dbupdate.dao.AgentDao;
 import main.asw.report.ReportFactory;
 import main.asw.report.ReportWriter;
-import main.asw.repository.dao.AgentDao;
 
 class DBUpdateImpl implements DBUpdate {
 

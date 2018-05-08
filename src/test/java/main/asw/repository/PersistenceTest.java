@@ -16,6 +16,9 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import main.asw.agents.Agent;
+import main.asw.dbupdate.DBUpdate;
+import main.asw.dbupdate.PersistenceFactory;
+import main.asw.dbupdate.RepositoryFactory;
 
 /**
  * Created by MIGUEL on 21/02/2017.

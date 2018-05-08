@@ -1,4 +1,4 @@
-package main.asw;
+package main.asw.initParameter;
 
 import java.nio.file.Files;
 import java.nio.file.LinkOption;

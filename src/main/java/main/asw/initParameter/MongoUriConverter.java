@@ -1,4 +1,4 @@
-package main.asw;
+package main.asw.initParameter;
 
 import com.beust.jcommander.IStringConverter;
 import com.mongodb.MongoClientURI;

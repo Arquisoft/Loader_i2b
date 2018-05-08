@@ -1,4 +1,4 @@
-package main.asw.repository;
+package main.asw.dbupdate;
 
 /**
  * @author nokutu

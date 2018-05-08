@@ -1,4 +1,4 @@
-package main.asw.location;
+package main.asw.util.location;
 
 import main.asw.util.Checker;
 

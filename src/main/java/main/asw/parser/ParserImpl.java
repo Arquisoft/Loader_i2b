@@ -9,10 +9,10 @@ import java.util.List;
 import org.slf4j.LoggerFactory;
 
 import main.asw.agents.Agent;
-import main.asw.location.LatLng;
+import main.asw.dbupdate.DBUpdate;
+import main.asw.dbupdate.RepositoryFactory;
 import main.asw.parser.masterfile.CSVFileParser;
-import main.asw.repository.DBUpdate;
-import main.asw.repository.RepositoryFactory;
+import main.asw.util.location.LatLng;
 
 /**
  * Created by nicolas on 3/02/17 for citizensLoader0.

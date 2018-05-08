@@ -1,7 +1,7 @@
-package main.asw.repository;
+package main.asw.dbupdate;
 
-import main.asw.repository.dao.AgentDao;
-import main.asw.repository.dao.AgentDaoImpl;
+import main.asw.dbupdate.dao.AgentDao;
+import main.asw.dbupdate.dao.AgentDaoImpl;
 
 /**
  * Created by Sergio Faya Fernandez

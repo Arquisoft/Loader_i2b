@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import main.asw.encryption.EncryptionUtils;
-import main.asw.location.LatLng;
 import main.asw.util.Checker;
+import main.asw.util.location.LatLng;
 
 /**
  * 

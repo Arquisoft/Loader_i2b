@@ -1,9 +1,9 @@
-package main.asw;
+package main.asw.initParameter;
 
 import com.beust.jcommander.Parameter;
 import com.mongodb.MongoClientURI;
 
-public class LoaderParameters {
+public class ParameterParser {
 
 	@Parameter(names = { "-h", "--help" },
 	help = true, 
