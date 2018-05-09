@@ -12,6 +12,7 @@ import main.asw.repository.MongoDBTest;
 import main.asw.repository.PersistenceTest;
 import main.asw.repository.daoTest.DaoTest;
 import main.asw.util.CheckerTests;
+import main.asw.util.LatLngTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ 
@@ -22,7 +23,8 @@ import main.asw.util.CheckerTests;
 	ReportWriterTest.class,
 	MongoDBTest.class,
 	PersistenceTest.class,
-	CheckerTests.class
+	CheckerTests.class,
+	LatLngTest.class
 	})
 public class AllTests {
 	
