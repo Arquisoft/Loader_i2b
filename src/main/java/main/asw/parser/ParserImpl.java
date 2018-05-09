@@ -34,7 +34,6 @@ class ParserImpl implements Parser {
 		csvParser = new CSVFileParser(csv);
 	}
 
-
 	@Override
 	public void readList() {
 		try {
@@ -54,32 +53,17 @@ class ParserImpl implements Parser {
 	private void loadData() throws IOException {
 		List<Agent> agentsAux = new ArrayList<>();
 		while (dataSource.nextRow()) {
-			if (dataSource.getCellIntegerValue(0) == 1 || dataSource.getCellIntegerValue(0) == 2) {
-				if (dataSource.getNumberOfColumns() == 5 || dataSource.getNumberOfColumns() == 4) {
-					try {
-						agentsAux.add(rowToAgent(dataSource.getCurrentRow()));
-					} catch (ParseException | IllegalArgumentException e) {
-						// Thrown by the Date Parser
-						log.error("ParseError: Error reading line " + dataSource.toString() + " " + e.getMessage(),
-								dataSource.getCurrentRow());
-					}
-				} else {
-					log.error("ParseError: Error reading line " + dataSource.toString()
-							+ " the number of columns is different than expected", dataSource.getCurrentRow());
+			if (dataSource.getNumberOfColumns() <= 5 ) {
+				try {
+					agentsAux.add(rowToAgent(dataSource.getCurrentRow()));
+				} catch (ParseException | IllegalArgumentException e) {
+					// Thrown by the Date Parser
+					log.error("ParseError: Error reading line " + dataSource.toString() + " " + e.getMessage(),
+							dataSource.getCurrentRow());
 				}
-			} else if (dataSource.getCellIntegerValue(0) == 3) {
-				if (dataSource.getNumberOfColumns() == 4) {
-					try {
-						agentsAux.add(rowToAgent(dataSource.getCurrentRow()));
-					} catch (ParseException | IllegalArgumentException e) {
-						// Thrown by the Date Parser
-						log.error("ParseError: Error reading line " + dataSource.toString() + " " + e.getMessage(),
-								dataSource.getCurrentRow());
-					}
-				} else {
-					log.error("ParseError: Error reading line " + dataSource.toString()
-							+ " the number of columns is different than expected", dataSource.getCurrentRow());
-				}
+			} else {
+				log.error("ParseError: Error reading line " + dataSource.toString()
+						+ " the number of columns is different than expected", dataSource.getCurrentRow());
 			}
 		}
 		this.agents = agentsAux;
@@ -97,7 +81,7 @@ class ParserImpl implements Parser {
 		int kind = dataSource.getCellIntegerValue(0);
 		String agentKind = agentKind(kind);
 		if (agentKind == null) {
-			throw new ParseException("Kind of agent is not in the csvDoc",row );
+			throw new ParseException("Kind of agent is not in the csvDoc", row);
 		}
 		String name = dataSource.getCell(1);
 		String email = dataSource.getCell(2);

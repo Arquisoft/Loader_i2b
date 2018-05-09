@@ -4,8 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -41,47 +39,6 @@ private String filePath;
 		return null;
 	}
 
-	public int getKindCodeOf(String kindName) throws FileNotFoundException, IOException {
-		if (kindName == null) return -1;
-		
-		Reader reader = null;
-		
-        try {
-	        	reader = new FileReader(filePath);
-	        	Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(reader);
-	        	for (CSVRecord record : records) {
-	        		this.assertValidRecord(record);
-	        		
-	        	    String name = record.get(1);
-	        	    if (kindName.equals(name)) return Integer.valueOf(record.get(0));
-	        	}
-        } finally {
-            if (reader != null) { try { reader.close(); } catch (IOException e) { e.printStackTrace(); } }
-        }
-        
-		return -1;
-	}
-	
-	public List<String> getKindNames() throws IOException {
-		Reader reader = null;
-		List<String> kindNames = new ArrayList<String>();
-		
-        try {
-	        	reader = new FileReader(filePath);
-	        	Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(reader);
-	        	for (CSVRecord record : records) {
-	        		this.assertValidRecord(record);
-	        		
-	        		kindNames.add(record.get(1));
-	        	}
-        } finally {
-            if (reader != null) { try { reader.close(); } catch (IOException e) { e.printStackTrace(); } }
-        }
-        
-        return kindNames;
-	}
-
-	
 	private void assertValidRecord(CSVRecord record) {
 		assert (record.size() == 2) : "Invalid number of columns";
 	}
