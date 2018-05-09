@@ -25,7 +25,7 @@ public class LoadAgents {
 
 	@SuppressWarnings("unused")
 	private final static Logger log = LoggerFactory.getLogger(LoadAgents.class);
-
+	private static boolean runnable = true;
 	final ParameterParser params = new ParameterParser();
 
 	private static void printWelcomeMessage() {
@@ -41,7 +41,9 @@ public class LoadAgents {
 		printWelcomeMessage();
 		LoadAgents agents = new LoadAgents();
 		agents.manageCommandParameters(args);
-		agents.run();
+		if(runnable) {
+			agents.run();
+		}
 	}
 
 	protected void manageCommandParameters(String... args) {
@@ -49,28 +51,31 @@ public class LoadAgents {
 		jCommander.setProgramName("loader");
 		try {
 			jCommander.parse(args);
+			if (params.isHelp()) {
+				runnable = false;
+				printUsage(jCommander);
+			}
 		} catch (ParameterException e) {
-			System.err.println(e.getMessage());
-			printUsage(jCommander);
-		}
-
-		if (params.isHelp()) {
-			printUsage(jCommander);
+			runnable = false;
+			System.err.println("Invalid flags, introduce -h for help");
 		}
 	}
 
 	protected void run() {
 		try {
-			if(params.getDbPort() == -1 && params.getMongoURI() == null){
+			if (params.getDbPort() == -1 && params.getMongoURI() == null) {
 				PersistenceFactory.getAgentDao().setMongoHost(27017);
-				System.out.println("APPLICATION-USAGE: Using default configuration for the database. Open in localhost:27017");
-			}else if(params.getMongoURI() != null) {
-				PersistenceFactory.getAgentDao().setRemoteMongoConnection(params.getMongoURI());
-			}else if(params.getDbPort() != -1) {
-				Checker.isLessThanZero(params.getDbPort());
-				PersistenceFactory.getAgentDao().setMongoHost(params.getDbPort());
-			} 
-			//these files should never be wrong
+				System.out.println(
+						"APPLICATION-USAGE: Using default configuration for the database. Open in localhost:27017");
+			} else {
+				if (params.getMongoURI() != null) {
+					PersistenceFactory.getAgentDao().setRemoteMongoConnection(params.getMongoURI());
+				} else if (params.getDbPort() != -1) {
+					Checker.isLessThanZero(params.getDbPort());
+					PersistenceFactory.getAgentDao().setMongoHost(params.getDbPort());
+				}
+			}
+			// these files should never be wrong
 			Parser parser = ParserFactory.getParser(params.getAgentsPath(), params.getTypePath());
 			parser.readList();
 			parser.insert();
@@ -80,12 +85,11 @@ public class LoadAgents {
 			System.err.println("An error occurred while running the application, use -h or --help to get help");
 			e.printStackTrace(System.out);
 		} finally {
-			System.exit(0);
+			System.out.println("UPDATE TO DATABASE COMPLETED");
 		}
 	}
 
 	private static void printUsage(JCommander jCommander) {
 		jCommander.usage();
-		System.exit(0);
 	}
 }
