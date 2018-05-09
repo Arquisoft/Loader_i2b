@@ -6,6 +6,8 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import main.asw.agents.AgentsTest;
 import main.asw.encryption.EncryptionTest;
+import main.asw.initParameter.Validators;
+import main.asw.main.MainTest;
 import main.asw.parser.ParserTest;
 import main.asw.report.ReportWriterTest;
 import main.asw.repository.MongoDBTest;
@@ -24,7 +26,9 @@ import main.asw.util.LatLngTest;
 	MongoDBTest.class,
 	PersistenceTest.class,
 	CheckerTests.class,
-	LatLngTest.class
+	LatLngTest.class,
+	MainTest.class,
+	Validators.class
 	})
 public class AllTests {
 	

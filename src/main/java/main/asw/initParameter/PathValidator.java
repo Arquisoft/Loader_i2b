@@ -14,11 +14,7 @@ public class PathValidator implements IParameterValidator{
 	public void validate(String name, String value) throws ParameterException {
 		Path path = Paths.get(value);
 		if(!Files.exists(path, LinkOption.NOFOLLOW_LINKS)) {
-			String message = value + "does not exist";
-			throw new ParameterException(message);
-		}
-		if (!Files.isRegularFile(path, LinkOption.NOFOLLOW_LINKS)) {
-			String message = value + "is not a file";
+			String message = name + "does not exist";
 			throw new ParameterException(message);
 		}
 	}
