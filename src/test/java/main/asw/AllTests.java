@@ -11,7 +11,7 @@ import main.asw.report.ReportWriterTest;
 import main.asw.repository.MongoDBTest;
 import main.asw.repository.PersistenceTest;
 import main.asw.repository.daoTest.DaoTest;
-import main.asw.util.UtilTest;
+import main.asw.util.CheckerTests;
 
 @RunWith(Suite.class)
 @SuiteClasses({ 
@@ -22,7 +22,7 @@ import main.asw.util.UtilTest;
 	ReportWriterTest.class,
 	MongoDBTest.class,
 	PersistenceTest.class,
-	UtilTest.class
+	CheckerTests.class
 	})
 public class AllTests {
 	
